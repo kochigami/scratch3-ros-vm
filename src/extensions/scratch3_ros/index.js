@@ -10,9 +10,10 @@ const icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34
 class Scratch3RosBlocks {
 
     constructor(runtime) {
+	// if (!localStorage.ROS_IP) localStorage.ROS_IP = prompt('Input IP address:');
+	var rosIP = prompt('Input IP address:');
 	alert('Remember to enable connections with ROS:\n\n roslaunch rosbridge_server rosbridge_websocket.launch');
-
-	this.ros = new RosUtil({ url : 'ws://localhost:9090' });
+	this.ros = new RosUtil({ url : 'ws://' + rosIP + ':9090' });
 	this.topicNames = ['topic'];
 	this.serviceNames = ['service'];
 	this.runtime = runtime;
@@ -88,6 +89,32 @@ class Scratch3RosBlocks {
 	return JSON.stringify(object);
     };
 			  
+    sendPose({POSE}) {
+	var poses = this.runtime._editingTarget.sprite.poses;
+	var pose = poses.find(obj=>obj.text === POSE);
+	var msg = {name: pose.name, position: pose.position};
+	this.ros.getTopic('/movescratch/joint_goal').then(
+	    rosTopic => {rosTopic.publish(msg);
+			 console.log(rosTopic);
+			 console.log(msg);
+			})
+    };
+
+    solveIK({COORD}) {
+	this.ros.getTopic('movescratch/pose_goal').then(
+	    rosTopic => rosTopic.publish(COORD))
+    };
+
+    waitInterpolation() {
+	var ROS = this.ros;
+	return new Promise( function(resolve) {
+	    ROS.getTopic('/move_group/result').then(
+		rosTopic =>
+		    rosTopic.subscribe(msg => { rosTopic.unsubscribe();
+						resolve(); }));
+	});
+    };
+
     _updateTopicList() {
 	var that = this;
 	that.ros.getTopics( function(topics){
@@ -102,6 +129,19 @@ class Scratch3RosBlocks {
 	    that.serviceNames = services.sort(); });
 	return that.serviceNames.map(function(val) { return {value: val, text: val}; });
     };
+
+    _updatePoseList() {
+	var poses = this.runtime._editingTarget.sprite.poses;
+	return poses ? poses : [{text: 'pose'}];
+    };
+
+    // _updatePromise() {
+    // 	var that = this;
+    // 	return new Promise( function(resolve, reject) {
+    // 	    that.ros.getTopics( function(topics){
+    // 		var topicNames = topics.topics.sort();
+    // 		topicNames.map(function(val) { return {value: val, text: val}; });
+    // 		resolve(topicNames); }); }); };
 
     getInfo() {
 	return {
@@ -227,11 +267,40 @@ class Scratch3RosBlocks {
 			    defaultValue: '"Hello!"'
 			}
 		    }
+		},
+		{
+		    opcode: 'sendPose',
+		    blockType: BlockType.COMMAND,
+		    text: 'Move to [POSE]',
+		    arguments: {
+			POSE: {
+			    type: ArgumentType.STRING,
+			    menu: 'posesMenu',
+			    defaultValue: 'pose'
+			}
+		    }
+		},
+		{
+		    opcode: 'solveIK',
+		    blockType: BlockType.COMMAND,
+		    text: 'Move arm to [COORD]',
+		    arguments: {
+			COORD: {
+			    type: ArgumentType.STRING,
+			    defaultValue: 'coordinates'
+			}
+		    }
+		},
+		{
+		    opcode: 'waitInterpolation',
+		    blockType: BlockType.COMMAND,
+		    text: 'Wait interpolation',
 		}
 	    ],
 	    menus: {
 		topicsMenu: '_updateTopicList',
-		servicesMenu: '_updateServiceList'
+		servicesMenu: '_updateServiceList',
+		posesMenu: '_updatePoseList'
 	    }
 	}
     }
