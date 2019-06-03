@@ -138,7 +138,7 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
             blocks: [
                 {
                     opcode: 'query',
-                    blockType: BlockType.COMMAND,
+                    blockType: BlockType.BOOLEAN,
                     text: 'query [TEXT]',
                     arguments: {
                         TEXT: {
