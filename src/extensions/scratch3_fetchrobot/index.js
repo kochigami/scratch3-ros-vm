@@ -127,6 +127,16 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
         delete this.map_spots[SPOT];
     }
 
+    dock ({ACTION}) {
+        if (ACTION === 'in') {
+            return this.ros.publishTopic('/dock/goal', {});
+        }
+        if (ACTION === 'out') {
+            return this.ros.publishTopic('/undock/goal', {});
+        }
+        return false;
+    }
+
     getInfo () {
         return {
             id: this.extensionId,
@@ -205,9 +215,22 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
                         }
                     }
                 },
+                {
+                    opcode: 'dock',
+                    blockType: BlockType.COMMAND,
+                    text: 'dock [ACTION]',
+                    arguments: {
+                        ACTION: {
+                            type: ArgumentType.STRING,
+                            menu: 'dockMenu',
+                            defaultValue: 'in'
+                        }
+                    }
+                },
             ],
             menus: {
                 soundMenu: ['1', '2', '3', '4', '5'],
+                dockMenu: ['in', 'out'],
                 spotMenu: '_spotNames'
             }
         };
