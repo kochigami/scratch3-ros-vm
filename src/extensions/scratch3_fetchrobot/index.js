@@ -9,6 +9,7 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
 
     constructor(runtime) {
         super('Fetch', 'fetchRobot', runtime);
+        this.app_list = [{name:'app', text:'App'}]
         this.map_spots = {
             'dock-front':  {
                 pose: {
@@ -43,6 +44,16 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
 
     _spotNames () {
         return Object.keys(this.map_spots);
+    }
+
+    _appNames () {
+        if (this.ros) {
+            const that = this;
+            this.ros.callService('/' + this.masterURI + '/list_apps', {}).
+                then(res =>
+                     that.app_list = res.available_apps.map(val => ({name: val.name, text: val.display_name})));
+        };
+        return this.app_list;
     }
 
     _waitMessage(topic, promise) {
@@ -137,6 +148,12 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
         return false;
     }
 
+    callApp ({APP}) {
+        var app = this.app_list.find(val => val.text === APP);
+        var msg = {name: app.name};
+        return this.ros.callService('/' + this.masterURI + '/start_app', msg).then(res => res.message);
+    }
+
     getInfo () {
         return {
             id: this.extensionId,
@@ -227,10 +244,23 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
                         }
                     }
                 },
+                {
+                    opcode: 'callApp',
+                    blockType: BlockType.COMMAND,
+                    text: 'call [APP]',
+                    arguments: {
+                        APP: {
+                            type: ArgumentType.STRING,
+                            menu: 'appMenu',
+                            defaultValue: this._appNames()[0].text
+                        }
+                    }
+                },
             ],
             menus: {
                 soundMenu: ['1', '2', '3', '4', '5'],
                 dockMenu: ['in', 'out'],
+                appMenu: '_appNames',
                 spotMenu: '_spotNames'
             }
         };
