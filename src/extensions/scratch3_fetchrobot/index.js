@@ -9,7 +9,6 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
 
     constructor(runtime) {
         super('Fetch', 'fetchRobot', runtime);
-        this.robotName = this.masterURI;
         this.app_list = [{name:'app', text:'App'}]
         this.map_spots = {
             'dock-front':  {
@@ -50,9 +49,10 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
     _appNames () {
         if (this.ros) {
             const that = this;
-            this.ros.callService('/' + this.robotName + '/list_apps', {}).
+            this.ros.getParam('/robot/name').get(robotName =>
+              this.ros.callService('/' + robotName + '/list_apps', {}).
                 then(res =>
-                     that.app_list = res.available_apps.map(val => ({name: val.name, text: val.display_name})));
+                     that.app_list = res.available_apps.map(val => ({name: val.name, text: val.display_name}))));
         };
         return this.app_list;
     }
@@ -152,7 +152,8 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
     callApp ({APP}) {
         var app = this.app_list.find(val => val.text === APP);
         var msg = {name: app.name};
-        return this.ros.callService('/' + this.robotName + '/start_app', msg).then(res => res.message);
+        this.ros.getParam('/robot/name').get(robotName =>
+                                             this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message))
     }
 
     getInfo () {
