@@ -23,6 +23,7 @@ const builtinExtensions = {
     ev3: () => require('../extensions/scratch3_ev3'),
     makeymakey: () => require('../extensions/scratch3_makeymakey'),
     ros: () => require('../extensions/scratch3_ros'),
+    pr2Robot: () => require('../extensions/scratch3_pr2robot'),
     fetchRobot: () => require('../extensions/scratch3_fetchrobot'),
     spotRobot: () => require('../extensions/scratch3_spotrobot'),
     boost: () => require('../extensions/scratch3_boost'),
