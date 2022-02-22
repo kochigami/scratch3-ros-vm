@@ -296,72 +296,72 @@ class Scratch3SpotRobotBlocks extends Scratch3RosBase {
                         }
                     }
                 },
-                {
-                    opcode: 'moveForward',
-                    blockType: BlockType.COMMAND,
-                    text: 'move [X]m forward in [TIME] seconds',
-                    arguments: {
-                        X: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 1.0
-                        },
-                        TIME: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 2
-                        },
-                    }
-                },
-                {
-                    opcode: 'moveRotate',
-                    blockType: BlockType.COMMAND,
-                    text: 'rotate [THETA] degrees in [TIME] seconds',
-                    arguments: {
-                        THETA: {
-                            type: ArgumentType.ANGLE,
-                            defaultValue: 0
-                        },
-                        TIME: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 2
-                        },
-                    }
-                },
-                {
-                    opcode: 'move3D',
-                    blockType: BlockType.COMMAND,
-                    text: 'move to X:[X] Y:[Y] THETA:[THETA] in [TIME] seconds',
-                    arguments: {
-                        X: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 1.0
-                        },
-                        Y: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 0.0
-                        },
-                        THETA: {
-                            type: ArgumentType.ANGLE,
-                            defaultValue: 0
-                        },
-                        TIME: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 2
-                        },
-                    }
-                },
-                {
-                    opcode: 'bodyPose',
-                    blockType: BlockType.COMMAND,
-                    text: 'orient body with roll:[X] pitch:[Y]',
-                    arguments: {
-                        X: {
-                            type: ArgumentType.ANGLE
-                        },
-                        Y: {
-                            type: ArgumentType.ANGLE
-                        },
-                    }
-                },
+                // {
+                //     opcode: 'moveForward',
+                //     blockType: BlockType.COMMAND,
+                //     text: 'move [X]m forward in [TIME] seconds',
+                //     arguments: {
+                //         X: {
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 1.0
+                //         },
+                //         TIME: {
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 2
+                //         },
+                //     }
+                // },
+                // {
+                //     opcode: 'moveRotate',
+                //     blockType: BlockType.COMMAND,
+                //     text: 'rotate [THETA] degrees in [TIME] seconds',
+                //     arguments: {
+                //         THETA: {
+                //             type: ArgumentType.ANGLE,
+                //             defaultValue: 0
+                //         },
+                //         TIME: {
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 2
+                //         },
+                //     }
+                // },
+                // {
+                //     opcode: 'move3D',
+                //     blockType: BlockType.COMMAND,
+                //     text: 'move to X:[X] Y:[Y] THETA:[THETA] in [TIME] seconds',
+                //     arguments: {
+                //         X: {
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 1.0
+                //         },
+                //         Y: {
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 0.0
+                //         },
+                //         THETA: {
+                //             type: ArgumentType.ANGLE,
+                //             defaultValue: 0
+                //         },
+                //         TIME: {
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 2
+                //         },
+                //     }
+                // },
+                // {
+                //     opcode: 'bodyPose',
+                //     blockType: BlockType.COMMAND,
+                //     text: 'orient body with roll:[X] pitch:[Y]',
+                //     arguments: {
+                //         X: {
+                //             type: ArgumentType.ANGLE
+                //         },
+                //         Y: {
+                //             type: ArgumentType.ANGLE
+                //         },
+                //     }
+                // },
                 {
                     opcode: 'callApp',
                     blockType: BlockType.COMMAND,
