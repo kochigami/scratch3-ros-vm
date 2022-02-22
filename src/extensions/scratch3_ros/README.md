@@ -26,7 +26,7 @@ sudo apt install ros-kinetic-rosbridge-server
 sudo apt install ros-kinetic-turtlesim ros-kinetic-actionlib-tutorials 
 ```
 
-1. Access http://scratch3-ros.jsk.imi.i.u-tokyo.ac.jp
+1. Access http://scratch3-ros.jsk.imi.i.u-tokyo.ac.jp . The extension currently doesn't support https access.
 
 2. Open a terminal and fire up the following command
 ```
