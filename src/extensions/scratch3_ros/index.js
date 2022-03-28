@@ -59,7 +59,7 @@ class Scratch3RosBlocks extends Scratch3RosBase {
 
     callService ({REQUEST, SERVICE}, util) {
         const req = this._getVariableValue(REQUEST, util.target) || this._tryParse(REQUEST);
-        return this.ros.callService(SERVICE, req);
+        return this.ros.callService(SERVICE, req).then(val => JSON.stringify(val));
     }
 
     getParamValue ({NAME}) {
