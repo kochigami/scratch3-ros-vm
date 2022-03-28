@@ -9,9 +9,12 @@ class RosUtil extends ROSLIB.Ros {
         this.runtime = runtime;
         this.extensionId = extensionId;
         this.everConnected = false;
+        this.active_processes = []
+        this._stopProcesses = this._stopProcesses.bind(this);
 
         this.on('connection', () => {
             this.everConnected = true;
+            this.runtime.on('PROJECT_STOP_ALL', this._stopProcesses.bind(this));
             this.runtime.emit(this.runtime.constructor.PERIPHERAL_CONNECTED);
         });
 
@@ -32,6 +35,17 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
+    // Stop pending actions
+    _stopProcesses () {
+        for(const goal of this.active_processes) {
+            console.log('Stopping ' + goal.actionClient.serverName + ' action ...');
+            goal.cancel();
+        }
+        // Processes are removed from active_processes in the callAction callback
+        // this.active_processes = [];
+    }
+
+    // Main functions
     getTopic (name) {
         const ros = this;
         if (name && !name.startsWith('/')) name = `/${name}`;
@@ -44,6 +58,26 @@ class RosUtil extends ROSLIB.Ros {
                         name: name,
                         messageType: type
                     })));
+        });
+    }
+
+    getAction (name) {
+        const ros = this;
+        let goal_name = name + '/goal';
+        return new Promise(resolve => {
+            ros.getTopicType(
+                goal_name,
+                type => {
+                    let sub = 'Goal';
+                    if (type.endsWith(sub)) {
+                        type = type.substring(0, type.length-sub.length);
+                    }
+                    resolve(new ROSLIB.ActionClient({
+                        ros: ros,
+                        serverName: name,
+                        actionName: type
+                    }));
+                });
         });
     }
 
@@ -103,6 +137,37 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
+    callAction (name, req) {
+        const that = this;
+        return new Promise(resolve => {
+            this.getAction(name).then(rosAction => {
+                let goal = new ROSLIB.Goal({
+                    actionClient: rosAction,
+                    goalMessage: req
+                });
+                this.active_processes.push(goal);
+                goal.on('result', res => {
+                    that.active_processes.splice(that.active_processes.indexOf(goal));
+                    rosAction.dispose();
+                });
+                goal.send();
+                resolve(true);
+            });
+        });
+    }
+
+    getActionResult (name) {
+        let result_name = name + '/result';
+        return new Promise(resolve => {
+            this.subscribeTopic(result_name, resolve);
+        });
+    }
+
+    cancelAction (name) {
+        let cancel_name = name + '/cancel';
+        return this.publishTopic(cancel_name, {});
+    }
+
     getRosType (val) {
         switch (typeof val) {
         case 'boolean':
@@ -127,6 +192,7 @@ class Scratch3RosBase {
         math.config({matrix: 'Array'});
 
         this.topicNames = ['/topic'];
+        this.actionNames = ['/action'];
         this.serviceNames = ['/service'];
         this.paramNames = ['/param'];
     }
@@ -215,6 +281,18 @@ class Scratch3RosBase {
             });
         }
         return this.topicNames.map(val => ({value: val, text: val}));
+    }
+
+    _updateActionList () {
+        if (this.ros) {
+            const that = this;
+            this.ros.getTopics(topics => {
+                let sub = '/feedback';
+                let actions = topics.topics.filter(val => val.endsWith(sub)).sort();
+                that.actionNames = actions.map(val => val.substring(0, val.length-sub.length));
+            });
+        }
+        return this.actionNames.map(val => ({value: val, text: val}));
     }
 
     _updateServiceList () {

@@ -62,6 +62,19 @@ class Scratch3RosBlocks extends Scratch3RosBase {
         return this.ros.callService(SERVICE, req);
     }
 
+    callAction ({REQUEST, ACTION}, util) {
+        const req = this._getVariableValue(REQUEST, util.target) || this._tryParse(REQUEST);
+        this.ros.callAction(ACTION, req);
+    }
+
+    getActionResult({ACTION}, util) {
+        return this.ros.getActionResult(ACTION).then(val => JSON.stringify(val.result));
+    }
+
+    cancelAction ({ACTION}, util) {
+        this.ros.cancelAction(ACTION);
+    }
+
     getParamValue ({NAME}) {
         const that = this;
         return new Promise(resolve => {
@@ -188,6 +201,11 @@ class Scratch3RosBlocks extends Scratch3RosBase {
             menu: 'topicsMenu',
             defaultValue: this.topicNames[0]
         };
+        const actionArg = {
+            type: ArgumentType.STRING,
+            menu: 'actionsMenu',
+            defaultValue: this.actionNames[0]
+        };
         const serviceArg = {
             type: ArgumentType.STRING,
             menu: 'servicesMenu',
@@ -236,6 +254,32 @@ class Scratch3RosBlocks extends Scratch3RosBase {
                     arguments: {
                         REQUEST: variableArg,
                         SERVICE: serviceArg
+                    }
+                },
+                '---',
+                {
+                    opcode: 'callAction',
+                    blockType: BlockType.COMMAND,
+                    text: 'Send [REQUEST] to [ACTION]',
+                    arguments: {
+                        REQUEST: variableArg,
+                        ACTION: actionArg,
+                    }
+                },
+                {
+                    opcode: 'getActionResult',
+                    blockType: BlockType.REPORTER,
+                    text: 'Get [ACTION] result',
+                    arguments: {
+                        ACTION: actionArg,
+                    }
+                },
+                {
+                    opcode: 'cancelAction',
+                    blockType: BlockType.COMMAND,
+                    text: 'Cancel [ACTION]',
+                    arguments: {
+                        ACTION: actionArg,
                     }
                 },
                 '---',
@@ -307,6 +351,7 @@ class Scratch3RosBlocks extends Scratch3RosBase {
             ],
             menus: {
                 topicsMenu: '_updateTopicList',
+                actionsMenu: '_updateActionList',
                 servicesMenu: '_updateServiceList',
                 variablesMenu: '_updateVariableList',
                 paramsMenu: '_updateParamList'
