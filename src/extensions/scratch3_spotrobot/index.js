@@ -70,15 +70,13 @@ class Scratch3SpotRobotBlocks extends Scratch3RosBase {
     playSound ({SOUND}) {
         SOUND = Cast.toNumber(SOUND);
         const msg = {
-            goal: {
-                sound_request: {
-                    sound: SOUND,
-                    command: 1,
-                    volume: 0.5
-                }
+            sound_request: {
+                sound: SOUND,
+                command: 1,
+                volume: 0.5
             }
         }
-        // this.ros.publishTopic('/robotsound/goal', msg);
+        this.ros.callAction('/robotsound', msg);
 
         // Wait for Result
         // return this._waitMessage(
@@ -88,16 +86,14 @@ class Scratch3SpotRobotBlocks extends Scratch3RosBase {
 
     speakText ({TEXT}) {
         const msg = {
-            goal: {
-                sound_request: {
-                    sound: -3,
-                    command: 1,
-                    volume: 0.8,
-                    arg: TEXT
-                }
+            sound_request: {
+                sound: -3,
+                command: 1,
+                volume: 0.8,
+                arg: TEXT
             }
         }
-        this.ros.publishTopic('/robotsound/goal', msg);
+        this.ros.callAction('/robotsound', msg);
 
         // // Wait for Result
         // return this._waitMessage(
@@ -199,6 +195,13 @@ class Scratch3SpotRobotBlocks extends Scratch3RosBase {
         var app = this.app_list.find(val => val.text === APP);
         var msg = {name: app.name};
         return this.ros.callService('/robot/start_app', msg).then(res => res.message);
+    }
+
+    stopApp ({APP}) {
+        var app = this.app_list.find(val => val.text === APP);
+        var msg = {name: app.name};
+        this.ros.getParam('/robot/name').get(robotName =>
+            this.ros.callService('/' + robotName + '/stop_app', msg).then(res => res.message))
     }
 
     getInfo () {
@@ -362,10 +365,11 @@ class Scratch3SpotRobotBlocks extends Scratch3RosBase {
                 //         },
                 //     }
                 // },
+                '---',
                 {
                     opcode: 'callApp',
                     blockType: BlockType.COMMAND,
-                    text: 'call [APP]',
+                    text: 'spot call [APP]',
                     arguments: {
                         APP: {
                             type: ArgumentType.STRING,
@@ -374,6 +378,18 @@ class Scratch3SpotRobotBlocks extends Scratch3RosBase {
                         }
                     }
                 },
+                {
+                    opcode: 'stopApp',
+                    blockType: BlockType.COMMAND,
+                    text: 'spot stop [APP]',
+                    arguments: {
+                        APP: {
+                            type: ArgumentType.STRING,
+                            menu: 'appMenu',
+                            defaultValue: this._appNames()[0].text
+                        }
+                    }
+                }
             ],
             menus: {
                 soundMenu: ['1', '2', '3', '4', '5'],

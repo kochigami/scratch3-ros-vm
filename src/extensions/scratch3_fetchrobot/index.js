@@ -75,15 +75,13 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
     playSound ({SOUND}) {
         SOUND = Cast.toNumber(SOUND);
         const msg = {
-            goal: {
-                sound_request: {
-                    sound: SOUND,
-                    command: 1,
-                    volume: 0.5
-                }
+            sound_request: {
+                sound: SOUND,
+                command: 1,
+                volume: 0.5
             }
         }
-        this.ros.publishTopic('/sound_play/goal', msg);
+        this.ros.callAction('/sound_play', msg);
 
         // // Wait for Result
         // return this._waitMessage(
@@ -93,16 +91,14 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
 
     speakText ({TEXT}) {
         const msg = {
-            goal: {
-                sound_request: {
-                    sound: -3,
-                    command: 1,
-                    volume: 0.8,
-                    arg: TEXT
-                }
+            sound_request: {
+                sound: -3,
+                command: 1,
+                volume: 0.8,
+                arg: TEXT
             }
         }
-        this.ros.publishTopic('/sound_play/goal', msg);
+        this.ros.callAction('/sound_play', msg);
 
         // // Wait for Result
         // return this._waitMessage(
@@ -141,10 +137,12 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
 
     dock ({ACTION}) {
         if (ACTION === 'in') {
-            return this.ros.publishTopic('/dock/goal', {});
+            this.ros.callAction('/dock', {});
+            return this.ros.getActionResult('/dock').then(val => JSON.stringify(val.result));
         }
         if (ACTION === 'out') {
-            return this.ros.publishTopic('/undock/goal', {});
+            this.ros.callAction('/undock', {});
+            return this.ros.getActionResult('/undock').then(val => JSON.stringify(val.result));
         }
         return false;
     }
@@ -153,7 +151,14 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
         var app = this.app_list.find(val => val.text === APP);
         var msg = {name: app.name};
         this.ros.getParam('/robot/name').get(robotName =>
-                                             this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message))
+            this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message))
+    }
+
+    stopApp ({APP}) {
+        var app = this.app_list.find(val => val.text === APP);
+        var msg = {name: app.name};
+        this.ros.getParam('/robot/name').get(robotName =>
+            this.ros.callService('/' + robotName + '/stop_app', msg).then(res => res.message))
     }
 
     getInfo () {
@@ -246,10 +251,23 @@ class Scratch3FetchRobotBlocks extends Scratch3RosBase {
                         }
                     }
                 },
+                '---',
                 {
                     opcode: 'callApp',
                     blockType: BlockType.COMMAND,
-                    text: 'call [APP]',
+                    text: 'fetch call [APP]',
+                    arguments: {
+                        APP: {
+                            type: ArgumentType.STRING,
+                            menu: 'appMenu',
+                            defaultValue: this._appNames()[0].text
+                        }
+                    }
+                },
+                {
+                    opcode: 'stopApp',
+                    blockType: BlockType.COMMAND,
+                    text: 'fetch stop [APP]',
                     arguments: {
                         APP: {
                             type: ArgumentType.STRING,
