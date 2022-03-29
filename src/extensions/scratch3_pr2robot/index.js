@@ -31,23 +31,33 @@ class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
                 {
                     opcode: 'playSound',
                     blockType: BlockType.COMMAND,
-                    text: 'play sound [SOUND]',
+                    text: 'play sound [SOUND] wait: [WAIT]',
                     arguments: {
                         SOUND: {
                             type: ArgumentType.STRING,
                             menu: 'soundMenu',
                             defaultValue: '1'
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
                         }
                     }
                 },
                 {
                     opcode: 'speakText',
                     blockType: BlockType.COMMAND,
-                    text: 'speak [TEXT]',
+                    text: 'speak [TEXT] wait: [WAIT]',
                     arguments: {
                         TEXT: {
                             type: ArgumentType.STRING,
                             defaultValue: 'Hello!'
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
                         }
                     }
                 },
@@ -79,6 +89,7 @@ class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
             ],
             menus: {
                 soundMenu: ['1', '2', '3', '4', '5'],
+                booleanMenu: ['true', 'false'],
                 appMenu: '_appNames',
             }
         };

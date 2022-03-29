@@ -23,12 +23,19 @@ class Scratch3RobotBase extends Scratch3RosBase {
         return this.app_list;
     }
 
+    _waitPromise (p) {
+        return new Promise(resolve => {
+            p.then(val => resolve());
+        });
+    }
+
     query ({TEXT}) {
         return confirm(TEXT);
     }
 
-    playSound ({SOUND}) {
+    playSound ({SOUND, WAIT}) {
         SOUND = Cast.toNumber(SOUND);
+        WAIT = Cast.toBoolean(WAIT);
         const msg = {
             sound_request: {
                 sound: SOUND,
@@ -36,10 +43,16 @@ class Scratch3RobotBase extends Scratch3RosBase {
                 volume: 1.0
             }
         }
-        this.ros.callAction(this.sound_server, msg);
+        if (WAIT) {
+            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg));
+        }
+        else {
+            this.ros.callAction(this.sound_server, msg);
+        }
     }
 
-    speakText ({TEXT}) {
+    speakText ({TEXT, WAIT}) {
+        WAIT = Cast.toBoolean(WAIT);
         const msg = {
             sound_request: {
                 sound: -3,
@@ -48,7 +61,12 @@ class Scratch3RobotBase extends Scratch3RosBase {
                 arg: TEXT
             }
         }
-        this.ros.callAction(this.sound_server, msg);
+        if (WAIT) {
+            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg));
+        }
+        else {
+            this.ros.callAction(this.sound_server, msg);
+        }
     }
 
     callApp ({APP}) {

@@ -156,6 +156,25 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
+    callSyncAction (name, req) {
+        const that = this;
+        return new Promise(resolve => {
+            this.getAction(name).then(rosAction => {
+                let goal = new ROSLIB.Goal({
+                    actionClient: rosAction,
+                    goalMessage: req
+                });
+                this.active_processes.push(goal);
+                goal.on('result', res => {
+                    that.active_processes.splice(that.active_processes.indexOf(goal));
+                    rosAction.dispose();
+                    resolve(res);
+                });
+                goal.send();
+            });
+        });
+    }
+
     getActionResult (name) {
         let result_name = name + '/result';
         return new Promise(resolve => {
