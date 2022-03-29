@@ -29,6 +29,36 @@ class Scratch3RobotBase extends Scratch3RosBase {
         });
     }
 
+    _waitMessage (topic, test) {
+        const that = this;
+        return new Promise(resolve => {
+            that.ros.getTopic(topic).then(rosTopic => {
+                if (!rosTopic.messageType) resolve();
+                rosTopic.subscribe(msg => {
+                    if (test(msg)) {
+                        rosTopic.unsubscribe();
+                        resolve();
+                    }
+                })
+            });
+        });
+    }
+
+    _waitApp (app, robotName) {
+        var statusTopic = '/' + robotName + '/application/app_status';
+        var expectedStart = "launching " + app.text;
+        var expectedStop = "stopping " + app.text;
+        return new Promise(resolve => {
+            this._waitMessage(statusTopic,
+                              msg => msg.status == expectedStart).
+                then(val => {
+                    this._waitMessage(statusTopic,
+                                      msg => msg.status == expectedStop).
+                        then(val => resolve());
+                });
+        });
+    }
+
     query ({TEXT}) {
         return confirm(TEXT);
     }
@@ -69,15 +99,25 @@ class Scratch3RobotBase extends Scratch3RosBase {
         }
     }
 
-    callApp ({APP}) {
+    callApp ({APP, WAIT}) {
+        WAIT = Cast.toBoolean(WAIT);
         var app = this.app_list.find(val => val.text === APP);
         if (!app) {
             console.log("Unknown app: " + APP);
             return;
         }
         var msg = {name: app.name};
-        this.ros.getParam('/robot/name').get(robotName =>
-            this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message))
+        return new Promise(resolve => {
+            this.ros.getParam('/robot/name').get(robotName => {
+                this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message);
+                if (WAIT) {
+                    this._waitApp(app, robotName).then(val => resolve());
+                }
+                else {
+                    resolve();
+                }
+            });
+        });
     }
 
     stopApp ({APP}) {

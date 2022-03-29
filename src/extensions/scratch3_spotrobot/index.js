@@ -303,12 +303,17 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
                 {
                     opcode: 'callApp',
                     blockType: BlockType.COMMAND,
-                    text: 'spot call [APP]',
+                    text: 'spot call [APP] wait: [WAIT]',
                     arguments: {
                         APP: {
                             type: ArgumentType.STRING,
                             menu: 'appMenu',
                             defaultValue: this._appNames()[0].text
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
                         }
                     }
                 },

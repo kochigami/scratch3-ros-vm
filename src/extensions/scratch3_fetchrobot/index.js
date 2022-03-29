@@ -187,12 +187,17 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
                 {
                     opcode: 'callApp',
                     blockType: BlockType.COMMAND,
-                    text: 'fetch call [APP]',
+                    text: 'fetch call [APP] wait: [WAIT]',
                     arguments: {
                         APP: {
                             type: ArgumentType.STRING,
                             menu: 'appMenu',
                             defaultValue: this._appNames()[0].text
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
                         }
                     }
                 },

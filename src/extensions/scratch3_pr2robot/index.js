@@ -65,12 +65,17 @@ class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
                 {
                     opcode: 'callApp',
                     blockType: BlockType.COMMAND,
-                    text: 'pr2 call [APP]',
+                    text: 'pr2 call [APP] wait: [WAIT]',
                     arguments: {
                         APP: {
                             type: ArgumentType.STRING,
                             menu: 'appMenu',
                             defaultValue: this._appNames()[0].text
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
                         }
                     }
                 },
