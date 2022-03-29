@@ -8,8 +8,25 @@ class Scratch3RobotBase extends Scratch3RosBase {
     constructor(extensionName, extensionId, soundServer, runtime) {
         super(extensionName, extensionId, runtime);
         this.app_list = [{name:'app', text:'App'}];
+        this.active_apps = [];
         this.sound_server = soundServer;
         this.icon = icon;
+
+        this._stopApps = this._stopApps.bind(this);
+        this.runtime.on('PROJECT_STOP_ALL', this._stopApps.bind(this));
+    }
+
+    _stopApp (app) {
+        var msg = {name: app.name};
+        this.ros.getParam('/robot/name').get(robotName =>
+            this.ros.callService('/' + robotName + '/stop_app', msg).then(res => res.message));
+    }
+
+    _stopApps () {
+        for (const app of this.active_apps) {
+            console.log('Stopping ' + app.text + ' app ...');
+            this._stopApp(app);
+        }
     }
 
     _appNames () {
@@ -54,7 +71,10 @@ class Scratch3RobotBase extends Scratch3RosBase {
                 then(val => {
                     this._waitMessage(statusTopic,
                                       msg => msg.status == expectedStop).
-                        then(val => resolve());
+                        then(val => {
+                            this.active_apps.splice(this.active_apps.indexOf(app));
+                            resolve();
+                        });
                 });
         });
     }
@@ -109,11 +129,13 @@ class Scratch3RobotBase extends Scratch3RosBase {
         var msg = {name: app.name};
         return new Promise(resolve => {
             this.ros.getParam('/robot/name').get(robotName => {
+                this.active_apps.push(app);
                 this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message);
                 if (WAIT) {
                     this._waitApp(app, robotName).then(val => resolve());
                 }
                 else {
+                    this._waitApp(app, robotName);
                     resolve();
                 }
             });
@@ -126,9 +148,7 @@ class Scratch3RobotBase extends Scratch3RosBase {
             console.log("Unknown app: " + APP);
             return;
         }
-        var msg = {name: app.name};
-        this.ros.getParam('/robot/name').get(robotName =>
-            this.ros.callService('/' + robotName + '/stop_app', msg).then(res => res.message))
+        this._stopApp(app);
     }
 }
 
