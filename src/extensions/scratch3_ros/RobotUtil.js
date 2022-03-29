@@ -71,6 +71,10 @@ class Scratch3RobotBase extends Scratch3RosBase {
 
     callApp ({APP}) {
         var app = this.app_list.find(val => val.text === APP);
+        if (!app) {
+            console.log("Unknown app: " + APP);
+            return;
+        }
         var msg = {name: app.name};
         this.ros.getParam('/robot/name').get(robotName =>
             this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message))
@@ -78,6 +82,10 @@ class Scratch3RobotBase extends Scratch3RosBase {
 
     stopApp ({APP}) {
         var app = this.app_list.find(val => val.text === APP);
+        if (!app) {
+            console.log("Unknown app: " + APP);
+            return;
+        }
         var msg = {name: app.name};
         this.ros.getParam('/robot/name').get(robotName =>
             this.ros.callService('/' + robotName + '/stop_app', msg).then(res => res.message))
