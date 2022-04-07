@@ -201,10 +201,12 @@ class RosUtil extends ROSLIB.Ros {
 
 class Scratch3RosBase {
 
-    constructor (extensionName, extensionId, runtime) {
+    constructor (extensionName, extensionId, runtime, masterURI) {
         this.extensionName = extensionName;
         this.extensionId = extensionId;
+        this.masterURI = masterURI;
         this.runtime = runtime;
+        this.firstConnect = true;
 
         this.runtime.registerPeripheralExtension(this.extensionId, this);
 
@@ -218,7 +220,10 @@ class Scratch3RosBase {
 
     // Peripheral connection functions
     scan () {
-        this.masterURI = prompt('Master URI:')
+        if (!this.firstConnect || !this.masterURI) {
+            this.masterURI = prompt('Master URI:');
+        }
+        if (this.firstConnect) this.firstConnect = false;
         this.connect('ws://' + this.masterURI + ':9090');
     }
 

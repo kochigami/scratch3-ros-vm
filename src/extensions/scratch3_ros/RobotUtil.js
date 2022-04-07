@@ -5,8 +5,8 @@ const icon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
 
 class Scratch3RobotBase extends Scratch3RosBase {
 
-    constructor(extensionName, extensionId, soundServer, runtime) {
-        super(extensionName, extensionId, runtime);
+    constructor(extensionName, extensionId, soundServer, runtime, masterURI) {
+        super(extensionName, extensionId, runtime, masterURI);
         this.app_list = [{name:'app', text:'App'}];
         this.active_apps = [];
         this.sound_server = soundServer;

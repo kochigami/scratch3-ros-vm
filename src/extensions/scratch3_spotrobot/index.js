@@ -5,7 +5,7 @@ const Scratch3RobotBase = require('../scratch3_ros/RobotUtil');
 class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Spot', 'spotRobot', '/robotsound', runtime);
+        super('Spot', 'spotRobot', '/robotsound', runtime, 'belka');
     }
 
     _makeGoal (pose, secs) {

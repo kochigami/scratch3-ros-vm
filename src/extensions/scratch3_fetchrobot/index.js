@@ -5,7 +5,7 @@ const Scratch3RobotBase = require('../scratch3_ros/RobotUtil');
 class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Fetch', 'fetchRobot', '/sound_play', runtime);
+        super('Fetch', 'fetchRobot', '/sound_play', runtime, 'fetch1075');
         this.map_spots = {
             'dock-front':  {
                 pose: {
