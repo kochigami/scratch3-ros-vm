@@ -26,6 +26,7 @@ const builtinExtensions = {
     pr2Robot: () => require('../extensions/scratch3_pr2robot'),
     fetchRobot: () => require('../extensions/scratch3_fetchrobot'),
     spotRobot: () => require('../extensions/scratch3_spotrobot'),
+    go1Robot: () => require('../extensions/scratch3_go1robot'),
     boost: () => require('../extensions/scratch3_boost'),
     gdxfor: () => require('../extensions/scratch3_gdx_for'),
     ros: () => require('../extensions/scratch3_ros'),
