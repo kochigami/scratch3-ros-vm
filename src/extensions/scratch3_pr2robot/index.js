@@ -5,7 +5,7 @@ const Scratch3RobotBase = require('../scratch3_ros/RobotUtil');
 class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Pr2', 'pr2Robot', '/robotsound', runtime, 'pr1040');
+        super('Pr2', 'pr2Robot', '/robotsound', runtime, 'pr1040s');
     }
 
     getInfo () {
