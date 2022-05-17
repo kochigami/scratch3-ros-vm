@@ -258,10 +258,11 @@ class Scratch3RosBase {
     // Error handling
     _reportError(err) {
         console.error(err);
+        // emit PROJECT_STOP_ALL and run all required callbacks
         this.runtime.stopAll();
+        // make the asset report the error
         const target = this.runtime.getEditingTarget();
         this.runtime.emit(Scratch3LooksBlocks.SAY_OR_THINK, target, 'say', err);
-        this.ros._stopProcesses();
     }
 
     // JSON utility
