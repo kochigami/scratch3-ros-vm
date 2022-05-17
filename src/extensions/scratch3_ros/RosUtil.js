@@ -1,6 +1,7 @@
 const math = require('mathjs');
 const JSON = require('circular-json');
 const ROSLIB = require('roslib');
+const Scratch3LooksBlocks = require('../../blocks/scratch3_looks.js')
 
 class RosUtil extends ROSLIB.Ros {
     constructor (runtime, extensionId, options) {
@@ -238,6 +239,15 @@ class Scratch3RosBase {
     isConnected () {
         if (this.ros) return this.ros.isConnected;
         return false;
+    }
+
+    // Error handling
+    _reportError(err) {
+        console.error(err);
+        this.runtime.stopAll();
+        const target = this.runtime.getEditingTarget();
+        this.runtime.emit(Scratch3LooksBlocks.SAY_OR_THINK, target, 'say', err);
+        this.ros._stopProcesses();
     }
 
     // JSON utility
