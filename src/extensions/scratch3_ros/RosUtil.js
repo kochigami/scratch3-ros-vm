@@ -50,25 +50,30 @@ class RosUtil extends ROSLIB.Ros {
     getTopic (name) {
         const ros = this;
         if (name && !name.startsWith('/')) name = `/${name}`;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             ros.getTopicType(
                 name,
-                type =>
+                type => {
+                    if (!type) reject('Topic ' + name + ' does not exist');
                     resolve(new ROSLIB.Topic({
                         ros: ros,
                         name: name,
                         messageType: type
-                    })));
+                    }));
+                },
+                reject);
         });
     }
 
     getAction (name) {
         const ros = this;
         let goal_name = name + '/goal';
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             ros.getTopicType(
                 goal_name,
                 type => {
+                    if (!type)
+                        reject('Action server ' + name + ' does not exist');
                     let sub = 'Goal';
                     if (type.endsWith(sub)) {
                         type = type.substring(0, type.length-sub.length);
@@ -78,21 +83,26 @@ class RosUtil extends ROSLIB.Ros {
                         serverName: name,
                         actionName: type
                     }));
-                });
+                },
+                reject);
         });
     }
 
     getService (name) {
         const ros = this;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             ros.getServiceType(
                 name,
-                type =>
+                type => {
+                    if (!type)
+                        reject('Serivice ' + name + ' does not exist');
                     resolve(new ROSLIB.Service({
                         ros: ros,
                         name: name,
                         serviceType: type
-                    })));
+                    }));
+                },
+                reject);
         });
     }
 
@@ -104,43 +114,44 @@ class RosUtil extends ROSLIB.Ros {
     }
 
     publishTopic (name, msg) {
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.getTopic(name).then(rosTopic => {
-                if (!rosTopic.messageType) resolve();
                 rosTopic.publish(msg);
-                resolve(true)
-            });
+                resolve(true);
+            }).
+                catch(reject);
         });
     }
 
     subscribeTopic (name, callback, unsubscribe=true) {
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.getTopic(name).then(rosTopic => {
-                if (!rosTopic.messageType) resolve();
                 rosTopic.subscribe(msg => {
                     if (unsubscribe) rosTopic.unsubscribe();
                     resolve(callback(msg));
                 });
-            });
+            }).
+                catch(reject);
         });
     }
 
     callService (name, req) {
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.getService(name).then(rosService => {
-                if (!rosService.serviceType) resolve();
                 rosService.callService(req,
                     res => {
                         rosService.unadvertise();
                         resolve(res);
-                    });
-            });
+                    },
+                    reject);
+            }).
+                catch(reject);
         });
     }
 
     callAction (name, req) {
         const that = this;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.getAction(name).then(rosAction => {
                 let goal = new ROSLIB.Goal({
                     actionClient: rosAction,
@@ -153,13 +164,14 @@ class RosUtil extends ROSLIB.Ros {
                 });
                 goal.send();
                 resolve(true);
-            });
+            }).
+                catch(reject);
         });
     }
 
     callSyncAction (name, req) {
         const that = this;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.getAction(name).then(rosAction => {
                 let goal = new ROSLIB.Goal({
                     actionClient: rosAction,
@@ -172,14 +184,16 @@ class RosUtil extends ROSLIB.Ros {
                     resolve(res);
                 });
                 goal.send();
-            });
+            }).
+                catch(reject);
         });
     }
 
     getActionResult (name) {
         let result_name = name + '/result';
-        return new Promise(resolve => {
-            this.subscribeTopic(result_name, resolve);
+        return new Promise((resolve, reject) => {
+            this.subscribeTopic(result_name, resolve).
+                catch(reject);
         });
     }
 

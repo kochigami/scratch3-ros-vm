@@ -18,7 +18,6 @@ class Scratch3RosBlocks extends Scratch3RosBase {
         return new Promise(resolve => {
             that.ros.getTopic(TOPIC).then(
                 rosTopic => {
-                    if (!rosTopic.messageType) resolve();
                     rosTopic.subscribe(msg => {
                         // rosTopic.unsubscribe();
                         if (rosTopic.messageType === 'std_msgs/String') {
@@ -28,7 +27,7 @@ class Scratch3RosBlocks extends Scratch3RosBase {
                         msg.constructor = Object;
                         resolve(msg);
                     });
-                });
+                }).catch(err => this._reportError(err));
         });
     }
 
@@ -59,20 +58,26 @@ class Scratch3RosBlocks extends Scratch3RosBase {
 
     callService ({REQUEST, SERVICE}, util) {
         const req = this._getVariableValue(REQUEST, util.target) || this._tryParse(REQUEST);
-        return this.ros.callService(SERVICE, req).then(val => JSON.stringify(val));
+        return this.ros.callService(SERVICE, req).
+            then(val => JSON.stringify(val)).
+            catch(err => this._reportError(err));
     }
 
     callAction ({REQUEST, ACTION}, util) {
         const req = this._getVariableValue(REQUEST, util.target) || this._tryParse(REQUEST);
-        this.ros.callAction(ACTION, req);
+        this.ros.callAction(ACTION, req).
+            catch(err => this._reportError(err));
     }
 
     getActionResult({ACTION}, util) {
-        return this.ros.getActionResult(ACTION).then(val => JSON.stringify(val.result));
+        return this.ros.getActionResult(ACTION).
+            then(val => JSON.stringify(val.result)).
+            catch(err => this._reportError(err));
     }
 
     cancelAction ({ACTION}, util) {
-        this.ros.cancelAction(ACTION);
+        this.ros.cancelAction(ACTION).
+            catch(err => this._reportError(err));
     }
 
     getParamValue ({NAME}) {
@@ -80,7 +85,8 @@ class Scratch3RosBlocks extends Scratch3RosBase {
         return new Promise(resolve => {
             const param = that.ros.getParam(NAME);
             param.get(val => {
-                if (val === null) resolve();
+                if (val === null)
+                    this._reportError('Rosparam ' + NAME + ' does not exist');
                 if (that._isJSON(val)) {
                     val.toString = function () { return JSON.stringify(this); };
                 }
