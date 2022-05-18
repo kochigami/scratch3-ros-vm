@@ -130,12 +130,12 @@ class Scratch3RobotBase extends Scratch3RosBase {
         WAIT = Cast.toBoolean(WAIT);
         var app = this.app_list.find(val => val.text === APP);
         if (!app)
-            this._reportError('App ' + APP + ' does not exist');
+            return this._reportError('App ' + APP + ' does not exist');
         var msg = {name: app.name};
         return new Promise(resolve => {
             this.ros.getParam('/robot/name').get(robotName => {
                 if (robotName === null)
-                    this._reportError('Rosparam /robot/name does not exist');
+                    return this._reportError('Rosparam /robot/name does not exist');
                 this.active_apps.push(app);
                 this.ros.callService('/' + robotName + '/start_app', msg).
                     then(res => res.message).
@@ -156,10 +156,8 @@ class Scratch3RobotBase extends Scratch3RosBase {
 
     stopApp ({APP}) {
         var app = this.app_list.find(val => val.text === APP);
-        if (!app) {
-            this._reportError('App ' + APP + ' does not exist');
-            return;
-        }
+        if (!app)
+            return this._reportError('App ' + APP + ' does not exist');
         this._stopApp(app);
     }
 }

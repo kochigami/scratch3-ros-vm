@@ -86,7 +86,7 @@ class Scratch3RosBlocks extends Scratch3RosBase {
             const param = that.ros.getParam(NAME);
             param.get(val => {
                 if (val === null)
-                    this._reportError('Rosparam ' + NAME + ' does not exist');
+                    return this._reportError('Rosparam ' + NAME + ' does not exist');
                 if (that._isJSON(val)) {
                     val.toString = function () { return JSON.stringify(this); };
                 }
