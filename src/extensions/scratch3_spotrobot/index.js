@@ -39,43 +39,57 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
     }
 
     claim ({MODE}) {
+        let serviceName;
         if (MODE === 'claim') {
-            return this.ros.callService('/spot/claim', {});
+            serviceName = '/spot/claim';
         }
         if (MODE === 'release') {
-            return this.ros.callService('/spot/release', {});
+            serviceName = '/spot/release';
         }
-        return false;
+
+        return this.ros.callService(serviceName, {}).
+            catch(err => this._reportError(err));
     }
 
     power ({MODE}) {
+        let serviceName;
         if (MODE === 'on') {
-            return this.ros.callService('/spot/power_on', {});
+            serviceName = '/spot/power_on';
         }
         if (MODE === 'off') {
-            return this.ros.callService('/spot/power_off', {});
+            serviceName = '/spot/power_off';
         }
-        return false;
+
+        return this.ros.callService(serviceName, {}).
+            catch(err => this._reportError(err));
     }
 
     act ({ACTION}) {
+        let serviceName;
         if (ACTION === 'stand') {
-            return this.ros.callService('/spot/stand', {});
+            serviceName = '/spot/stand';
         }
         if (ACTION === 'sit') {
-            return this.ros.callService('/spot/sit', {});
+            serviceName = '/spot/sit';
         }
-        return false;
+
+        return this.ros.callService(serviceName, {}).
+            catch(err => this._reportError(err));
     }
 
     dock ({ACTION}) {
+        let serviceName;
+        let req = {};
         if (ACTION === 'in') {
-            return this.ros.callService('/spot/dock', {dock_id: 521});
+            serviceName = '/spot/dock';
+            req = {dock_id: 521};
         }
         if (ACTION === 'out') {
-            return this.ros.callService('/spot/undock', {});
+            serviceName = '/spot/undock';
         }
-        return false;
+
+        return this.ros.callService(serviceName, {}).
+            catch(err => this._reportError(err));
     }
 
     moveForward ({X, TIME}) {
@@ -87,7 +101,8 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
         return this._waitMessage(
             '/spot/trajectory/result',
             this.ros.publishTopic('/spot/trajectory/goal', msg)
-        );
+        ).
+            catch(err => this._reportError(err));
     }
 
     moveRotate ({THETA, TIME}) {
@@ -101,7 +116,8 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
         return this._waitMessage(
             '/spot/trajectory/result',
             this.ros.publishTopic('/spot/trajectory/goal', msg)
-        );
+        ).
+            catch(err => this._reportError(err));
     }
 
     move3D ({X, Y, THETA, TIME}) {
@@ -115,7 +131,8 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
         return this._waitMessage(
             '/spot/trajectory/result',
             this.ros.publishTopic('/spot/trajectory/goal', msg)
-        );
+        ).
+            catch(err => this._reportError(err));
     }
 
     bodyPose ({X, Y}) {
@@ -125,7 +142,8 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
             orientation:  orientation
         };
 
-        this.ros.publishTopic('/spot/body_pose', msg);
+        this.ros.publishTopic('/spot/body_pose', msg).
+            catch(err => this._reportError(err));
     }
 
     getInfo () {

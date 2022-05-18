@@ -66,7 +66,8 @@ class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
         if (val == -1) { return(false); }
         this.mode = val;
         let msg = this._makeHighCmd();
-        return this.ros.publishTopic('/high_cmd', msg);
+        return this.ros.publishTopic('/high_cmd', msg).
+            catch(err => this._reportError(err));
     }
 
     setMode ({MODE}) {
@@ -74,7 +75,8 @@ class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
         if (val == -1) { return(false); }
         this.mode = val;
         let msg = this._makeHighCmd();
-        return this.ros.publishTopic('/high_cmd', msg);
+        return this.ros.publishTopic('/high_cmd', msg).
+            catch(err => this._reportError(err));
     }
 
     setGaitType ({TYPE}) {
@@ -82,7 +84,8 @@ class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
         if (val == -1) { return(false); }
         this.gaitType = val;
         let msg = this._makeHighCmd();
-        return this.ros.publishTopic('/high_cmd', msg);
+        return this.ros.publishTopic('/high_cmd', msg).
+            catch(err => this._reportError(err));
     }
 
     setSpeedLevel ({LEVEL}) {
@@ -90,7 +93,8 @@ class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
         if (val == -1) { return(false); }
         this.speedLevel = val;
         let msg = this._makeHighCmd();
-        return this.ros.publishTopic('/high_cmd', msg);
+        return this.ros.publishTopic('/high_cmd', msg).
+            catch(err => this._reportError(err));
     }
 
     getInfo () {

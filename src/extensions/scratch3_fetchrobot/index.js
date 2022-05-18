@@ -51,7 +51,8 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
         return this._waitMessage(
             '/move_base/result',
             this.ros.publishTopic('/move_base_simple/goal', msg)
-        );
+        ).
+            catch(err => this._reportError(err));
     }
 
     saveSpot ({NAME}) {
@@ -64,7 +65,8 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
                         orientation: msg.pose.pose.orientation
                     }
                 };
-            });
+            }).
+            catch(err => this._reportError(err));
     }
 
     deleteSpot ({SPOT}) {
@@ -72,14 +74,17 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
     }
 
     dock ({ACTION}) {
-        if (ACTION === 'in') {
-            this.ros.callAction('/dock', {});
-            return this.ros.getActionResult('/dock').then(val => JSON.stringify(val.result));
-        }
-        if (ACTION === 'out') {
-            this.ros.callAction('/undock', {});
-            return this.ros.getActionResult('/undock').then(val => JSON.stringify(val.result));
-        }
+        let actionName;
+        if (ACTION === 'in')
+            actionName = '/dock';
+        if (ACTION === 'out')
+            actionName = '/undock';
+
+        this.ros.callAction(actionName, {}).
+            catch(err => this._reportError(err));
+        return this.ros.getActionResult(actionName).
+            then(val => JSON.stringify(val.result)).
+            catch(err => this._reportError(err));
         return false;
     }
 
