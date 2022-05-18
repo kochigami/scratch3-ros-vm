@@ -16,10 +16,12 @@ class Scratch3RobotBase extends Scratch3RosBase {
         this.runtime.on('PROJECT_STOP_ALL', this._stopApps.bind(this));
     }
 
-    _stopApp (app) {
+    _stopApp (app, raiseError) {
         var msg = {name: app.name};
         this.ros.getParam('/robot/name').get(robotName =>
-            this.ros.callService('/' + robotName + '/stop_app', msg).then(res => res.message));
+            this.ros.callService('/' + robotName + '/stop_app', msg).
+                then(res => res.message).
+                catch(err => raiseError ? this._reportError(err) : console.error(err)));
     }
 
     _stopApps () {
@@ -35,7 +37,8 @@ class Scratch3RobotBase extends Scratch3RosBase {
             this.ros.getParam('/robot/name').get(robotName =>
               this.ros.callService('/' + robotName + '/list_apps', {}).
                 then(res =>
-                     that.app_list = res.available_apps.map(val => ({name: val.name, text: val.display_name}))));
+                     that.app_list = res.available_apps.map(val => ({name: val.name, text: val.display_name}))).
+                catch(console.error));
         };
         return this.app_list;
     }
@@ -158,7 +161,7 @@ class Scratch3RobotBase extends Scratch3RosBase {
         var app = this.app_list.find(val => val.text === APP);
         if (!app)
             return this._reportError('App ' + APP + ' does not exist');
-        this._stopApp(app);
+        this._stopApp(app, true);
     }
 }
 

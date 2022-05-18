@@ -327,7 +327,8 @@ class Scratch3RosBase {
             const that = this;
             this.ros.getTopics(topics => {
                 that.topicNames = topics.topics.sort();
-            });
+            },
+            console.error);
         }
         return this.topicNames.map(val => ({value: val, text: val}));
     }
@@ -339,7 +340,8 @@ class Scratch3RosBase {
                 let sub = '/feedback';
                 let actions = topics.topics.filter(val => val.endsWith(sub)).sort();
                 that.actionNames = actions.map(val => val.substring(0, val.length-sub.length));
-            });
+            },
+            console.error);
         }
         return this.actionNames.map(val => ({value: val, text: val}));
     }
@@ -349,7 +351,8 @@ class Scratch3RosBase {
             const that = this;
             this.ros.getServices(services => {
                 that.serviceNames = services.sort();
-            });
+            },
+            console.error);
         }
         return this.serviceNames.map(val => ({value: val, text: val}));
     }
@@ -359,7 +362,8 @@ class Scratch3RosBase {
             const that = this;
             this.ros.getParams(params => {
                 that.paramNames = params.sort();
-            });
+            },
+            console.error);
         }
         return this.paramNames.map(val => ({value: val, text: val}));
     }
