@@ -95,7 +95,7 @@ class RosUtil extends ROSLIB.Ros {
                 name,
                 type => {
                     if (!type)
-                        reject('Serivice ' + name + ' does not exist');
+                        reject('Service ' + name + ' does not exist');
                     resolve(new ROSLIB.Service({
                         ros: ros,
                         name: name,
