@@ -41,23 +41,24 @@ class Scratch3RobotBase extends Scratch3RosBase {
     }
 
     _waitPromise (p) {
-        return new Promise(resolve => {
-            p.then(val => resolve());
+        return new Promise((resolve, reject) => {
+            p.then(val => resolve()).
+                catch(reject);
         });
     }
 
     _waitMessage (topic, test) {
         const that = this;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             that.ros.getTopic(topic).then(rosTopic => {
-                if (!rosTopic.messageType) resolve();
                 rosTopic.subscribe(msg => {
                     if (test(msg)) {
                         rosTopic.unsubscribe();
                         resolve();
                     }
                 })
-            });
+            }).
+                catch(reject);
         });
     }
 
@@ -65,7 +66,7 @@ class Scratch3RobotBase extends Scratch3RosBase {
         var statusTopic = '/' + robotName + '/application/app_status';
         var expectedStart = "launching " + app.text;
         var expectedStop = "stopping " + app.text;
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this._waitMessage(statusTopic,
                               msg => msg.status == expectedStart).
                 then(val => {
@@ -74,8 +75,10 @@ class Scratch3RobotBase extends Scratch3RosBase {
                         then(val => {
                             this.active_apps.splice(this.active_apps.indexOf(app));
                             resolve();
-                        });
-                });
+                        }).
+                        catch(reject);
+                }).
+                catch(reject);
         });
     }
 
@@ -94,10 +97,12 @@ class Scratch3RobotBase extends Scratch3RosBase {
             }
         }
         if (WAIT) {
-            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg));
+            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg)).
+                catch(err => this._reportError(err));
         }
         else {
-            this.ros.callAction(this.sound_server, msg);
+            this.ros.callAction(this.sound_server, msg).
+                catch(err => this._reportError(err));
         }
     }
 
@@ -112,30 +117,37 @@ class Scratch3RobotBase extends Scratch3RosBase {
             }
         }
         if (WAIT) {
-            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg));
+            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg)).
+                catch(err => this._reportError(err));
         }
         else {
-            this.ros.callAction(this.sound_server, msg);
+            this.ros.callAction(this.sound_server, msg).
+                catch(err => this._reportError(err));
         }
     }
 
     callApp ({APP, WAIT}) {
         WAIT = Cast.toBoolean(WAIT);
         var app = this.app_list.find(val => val.text === APP);
-        if (!app) {
-            console.log("Unknown app: " + APP);
-            return;
-        }
+        if (!app)
+            this._reportError('App ' + APP + ' does not exist');
         var msg = {name: app.name};
         return new Promise(resolve => {
             this.ros.getParam('/robot/name').get(robotName => {
+                if (robotName === null)
+                    this._reportError('Rosparam /robot/name does not exist');
                 this.active_apps.push(app);
-                this.ros.callService('/' + robotName + '/start_app', msg).then(res => res.message);
+                this.ros.callService('/' + robotName + '/start_app', msg).
+                    then(res => res.message).
+                    catch(err => this._reportError(err));
                 if (WAIT) {
-                    this._waitApp(app, robotName).then(val => resolve());
+                    this._waitApp(app, robotName).
+                        then(val => resolve()).
+                        catch(err => this._reportError(err));
                 }
                 else {
-                    this._waitApp(app, robotName);
+                    this._waitApp(app, robotName).
+                        catch(err => this._reportError(err));
                     resolve();
                 }
             });
@@ -145,7 +157,7 @@ class Scratch3RobotBase extends Scratch3RosBase {
     stopApp ({APP}) {
         var app = this.app_list.find(val => val.text === APP);
         if (!app) {
-            console.log("Unknown app: " + APP);
+            this._reportError('App ' + APP + ' does not exist');
             return;
         }
         this._stopApp(app);
