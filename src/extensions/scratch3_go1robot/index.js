@@ -6,7 +6,7 @@ const icon = require('./icon');
 class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Go1', 'go1Robot', '/sound_play', runtime, 'localhost');
+        super('Go1', 'go1Robot', '/sound_play', '/robotsound_jp', runtime, 'localhost');
         this.icon = icon;
         this.mode = 0;
         this.gaitType = 0;

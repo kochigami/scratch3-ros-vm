@@ -1,14 +1,16 @@
 const Cast = require('../../util/cast');
 const Scratch3RosBase = require('./RosUtil');
+const ROSLIB = require('roslib');
 const icon = require('./icon');
 
 class Scratch3RobotBase extends Scratch3RosBase {
 
-    constructor(extensionName, extensionId, soundServer, runtime, masterURI) {
+    constructor(extensionName, extensionId, soundServer, soundServerJp, runtime, masterURI) {
         super(extensionName, extensionId, runtime, masterURI);
         this.app_list = [{name:'app', text:'App'}];
         this.active_apps = [];
         this.sound_server = soundServer;
+        this.sound_server_jp = soundServerJp;
         this.icon = icon;
 
         this._stopApps = this._stopApps.bind(this);
@@ -84,6 +86,25 @@ class Scratch3RobotBase extends Scratch3RosBase {
         });
     }
 
+    _soundRequest (server, request, wait) {
+        return this._waitPromise(this.ros.callActionInstance(server, request, wait)).
+            catch(err => this._reportError(err));
+    }
+
+    _setSoundServer (server, japanese=false) {
+        if (typeof server == 'string') {
+            newServer =  new ROSLIB.ActionClient({
+                ros: this.ros,
+                serverName: server,
+                actionName: 'sound_play/SoundRequestAction'
+            });
+            if (japanese)
+                this.sound_server_jp = newServer;
+            else
+                this.sound_server = newServer;
+        }
+    }
+
     query ({TEXT}) {
         return confirm(TEXT);
     }
@@ -91,6 +112,7 @@ class Scratch3RobotBase extends Scratch3RosBase {
     playSound ({SOUND, WAIT}) {
         SOUND = Cast.toNumber(SOUND);
         WAIT = Cast.toBoolean(WAIT);
+        this._setSoundServer(this.sound_server);
         const msg = {
             sound_request: {
                 sound: SOUND,
@@ -98,18 +120,12 @@ class Scratch3RobotBase extends Scratch3RosBase {
                 volume: 1.0
             }
         }
-        if (WAIT) {
-            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg)).
-                catch(err => this._reportError(err));
-        }
-        else {
-            this.ros.callAction(this.sound_server, msg).
-                catch(err => this._reportError(err));
-        }
+        return this._soundRequest(this.sound_server, msg, WAIT);
     }
 
     speakText ({TEXT, WAIT}) {
         WAIT = Cast.toBoolean(WAIT);
+        this._setSoundServer(this.sound_server);
         const msg = {
             sound_request: {
                 sound: -3,
@@ -118,14 +134,21 @@ class Scratch3RobotBase extends Scratch3RosBase {
                 arg: TEXT
             }
         }
-        if (WAIT) {
-            return this._waitPromise(this.ros.callSyncAction(this.sound_server, msg)).
-                catch(err => this._reportError(err));
+        return this._soundRequest(this.sound_server, msg, WAIT);
+    }
+
+    speakTextJp ({TEXT, WAIT}) {
+        WAIT = Cast.toBoolean(WAIT);
+        this._setSoundServer(this.sound_server_jp, true);
+        const msg = {
+            sound_request: {
+                sound: -3,
+                command: 1,
+                volume: 1.0,
+                arg: TEXT
+            }
         }
-        else {
-            this.ros.callAction(this.sound_server, msg).
-                catch(err => this._reportError(err));
-        }
+        return this._soundRequest(this.sound_server_jp, msg, WAIT);
     }
 
     callApp ({APP, WAIT}) {

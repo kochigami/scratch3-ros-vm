@@ -8,7 +8,7 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
         let masterURI = prompt('Master URI:');
-        super('Pepper', 'pepperRobot', '/robotsound', runtime, masterURI);
+        super('Pepper', 'pepperRobot', '/robotsound', '/robotsound_jp', runtime, masterURI);
         this.icon = icon;
     }
 

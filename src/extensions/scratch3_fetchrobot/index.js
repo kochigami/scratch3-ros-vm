@@ -6,7 +6,7 @@ const icon = require('./icon');
 class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Fetch', 'fetchRobot', '/sound_play', runtime, 'fetch1075');
+        super('Fetch', 'fetchRobot', '/sound_play', '/robotsound_jp', runtime, 'fetch1075');
         this.icon = icon;
         this.map_spots = {
             'dock-front':  {
@@ -144,6 +144,23 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
                         }
                     }
                 },
+                {
+                    opcode: 'speakTextJp',
+                    blockType: BlockType.COMMAND,
+                    text: 'speak-jp [TEXT] wait: [WAIT]',
+                    arguments: {
+                        TEXT: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'こんにちは!'
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
+                        }
+                    }
+                },
+                '---',
                 {
                     opcode: 'goSpot',
                     blockType: BlockType.COMMAND,

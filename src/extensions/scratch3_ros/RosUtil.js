@@ -149,41 +149,41 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
-    callAction (name, req, unsubscribe) {
+    callActionInstance (action, req, sync=true, unsubscribe) {
         const that = this;
+        return new Promise(resolve => {
+            let goal = new ROSLIB.Goal({
+                actionClient: action,
+                goalMessage: req
+            });
+            this.active_processes.push(goal);
+            goal.on('result', res => {
+                that.active_processes.splice(that.active_processes.indexOf(goal));
+                if (unsubscribe) action.dispose();
+                if (sync) resolve(res);
+            });
+            goal.send();
+            if (!sync) resolve(true);
+        });
+    }
+
+    callAction (name, req, unsubscribe) {
         return new Promise((resolve, reject) => {
             this.getAction(name).then(rosAction => {
-                let goal = new ROSLIB.Goal({
-                    actionClient: rosAction,
-                    goalMessage: req
-                });
-                this.active_processes.push(goal);
-                goal.on('result', res => {
-                    that.active_processes.splice(that.active_processes.indexOf(goal));
-                    if (unsubscribe) rosAction.dispose();
-                });
-                goal.send();
-                resolve(true);
+                this.callActionInstance(rosAction, req, false, unsubscribe).
+                    then(resolve).
+                    catch(reject);
             }).
                 catch(reject);
         });
     }
 
     callSyncAction (name, req, unsubscribe) {
-        const that = this;
         return new Promise((resolve, reject) => {
             this.getAction(name).then(rosAction => {
-                let goal = new ROSLIB.Goal({
-                    actionClient: rosAction,
-                    goalMessage: req
-                });
-                this.active_processes.push(goal);
-                goal.on('result', res => {
-                    that.active_processes.splice(that.active_processes.indexOf(goal));
-                    if (unsubscribe) rosAction.dispose();
-                    resolve(res);
-                });
-                goal.send();
+                this.callActionInstance(rosAction, req, true, unsubscribe).
+                    then(resolve).
+                    catch(reject);
             }).
                 catch(reject);
         });

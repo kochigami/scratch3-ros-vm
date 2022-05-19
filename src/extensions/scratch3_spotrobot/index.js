@@ -6,7 +6,7 @@ const icon = require('./icon');
 class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Spot', 'spotRobot', '/robotsound', runtime, 'belka');
+        super('Spot', 'spotRobot', '/robotsound', '/robotsound_jp', runtime, 'belka');
         this.icon = icon;
     }
 
@@ -202,6 +202,23 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
                         }
                     }
                 },
+                {
+                    opcode: 'speakTextJp',
+                    blockType: BlockType.COMMAND,
+                    text: 'speak-jp [TEXT] wait: [WAIT]',
+                    arguments: {
+                        TEXT: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'こんにちは!'
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
+                        }
+                    }
+                },
+                '---',
                 {
                     opcode: 'claim',
                     blockType: BlockType.COMMAND,

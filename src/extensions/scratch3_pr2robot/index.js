@@ -6,7 +6,7 @@ const icon = require('./icon');
 class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Pr2', 'pr2Robot', '/robotsound', runtime, 'pr1040s');
+        super('Pr2', 'pr2Robot', '/robotsound', '/robotsound_jp', runtime, 'pr1040s');
         this.icon = icon;
     }
 
@@ -56,6 +56,22 @@ class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
                         TEXT: {
                             type: ArgumentType.STRING,
                             defaultValue: 'Hello!'
+                        },
+                        WAIT: {
+                            type: ArgumentType.BOOLEAN,
+                            menu: 'booleanMenu',
+                            defaultValue: 'true'
+                        }
+                    }
+                },
+                {
+                    opcode: 'speakTextJp',
+                    blockType: BlockType.COMMAND,
+                    text: 'speak-jp [TEXT] wait: [WAIT]',
+                    arguments: {
+                        TEXT: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'こんにちは!'
                         },
                         WAIT: {
                             type: ArgumentType.BOOLEAN,
