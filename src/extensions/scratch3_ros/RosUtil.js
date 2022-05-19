@@ -135,12 +135,12 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
-    callService (name, req) {
+    callService (name, req, unadvertise) {
         return new Promise((resolve, reject) => {
             this.getService(name).then(rosService => {
                 rosService.callService(req,
                     res => {
-                        rosService.unadvertise();
+                        if (unadvertise) rosService.unadvertise();
                         resolve(res);
                     },
                     reject);

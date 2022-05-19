@@ -51,13 +51,13 @@ class Scratch3RobotBase extends Scratch3RosBase {
         });
     }
 
-    _waitMessage (topic, test) {
+    _waitMessage (topic, test, unsubscribe) {
         const that = this;
         return new Promise((resolve, reject) => {
             that.ros.getTopic(topic).then(rosTopic => {
                 rosTopic.subscribe(msg => {
                     if (test(msg)) {
-                        rosTopic.unsubscribe();
+                        if (unsubscribe) rosTopic.unsubscribe();
                         resolve();
                     }
                 })
