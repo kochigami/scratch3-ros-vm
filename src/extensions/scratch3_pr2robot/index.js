@@ -16,6 +16,7 @@ class Scratch3Pr2RobotBlocks extends Scratch3RobotBase {
             name: this.extensionName,
             showStatusButton: true,
 
+            color1: '#BA5950',
             menuIconURI: this.icon,
             
             blocks: [

@@ -59,6 +59,7 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             name: this.extensionName,
             showStatusButton: true,
 
+            color1: '#BED3D7',
             menuIconURI: this.icon,
             
             blocks: [

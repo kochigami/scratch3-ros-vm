@@ -227,10 +227,6 @@ class Scratch3RosBlocks extends Scratch3RosBase {
             name: this.extensionName,
             showStatusButton: true,
 
-            colour: '#8BC34A',
-            colourSecondary: '#7CB342',
-            colourTertiary: '#689F38',
-
             menuIconURI: icon,
 
             blocks: [

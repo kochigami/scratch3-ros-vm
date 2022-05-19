@@ -154,10 +154,7 @@ class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
             name: this.extensionName,
             showStatusButton: true,
 
-            colour: '#D41B1B',
-            colourSecondary: '#C8A94A',
-            colourTertiary: '#555555',
-
+            color1: '#8ED154',
             menuIconURI: this.icon,
             
             blocks: [
