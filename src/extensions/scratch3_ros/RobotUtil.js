@@ -102,7 +102,7 @@ class Scratch3RobotBase extends Scratch3RosBase {
 
     _setSoundServer (server, japanese=false) {
         if (typeof server == 'string') {
-            newServer =  new ROSLIB.ActionClient({
+            let newServer =  new ROSLIB.ActionClient({
                 ros: this.ros,
                 serverName: server,
                 actionName: 'sound_play/SoundRequestAction'
