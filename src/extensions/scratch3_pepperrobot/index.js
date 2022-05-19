@@ -2,12 +2,14 @@ const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const Scratch3RobotBase = require('../scratch3_ros/RobotUtil');
 const Cast = require('../../util/cast');
+const icon = require('./icon');
 
 class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
         let masterURI = prompt('Master URI:');
         super('Pepper', 'pepperRobot', '/robotsound', runtime, masterURI);
+        this.icon = icon;
     }
 
     _toRange(val, min, max) {

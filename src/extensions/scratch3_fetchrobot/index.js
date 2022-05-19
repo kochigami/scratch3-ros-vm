@@ -1,11 +1,13 @@
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const Scratch3RobotBase = require('../scratch3_ros/RobotUtil');
+const icon = require('./icon');
 
 class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
         super('Fetch', 'fetchRobot', '/sound_play', runtime, 'fetch1075');
+        this.icon = icon;
         this.map_spots = {
             'dock-front':  {
                 pose: {
