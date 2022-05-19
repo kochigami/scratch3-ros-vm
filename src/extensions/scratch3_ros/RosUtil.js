@@ -123,7 +123,7 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
-    subscribeTopic (name, callback, unsubscribe=true) {
+    subscribeTopic (name, callback, unsubscribe) {
         return new Promise((resolve, reject) => {
             this.getTopic(name).then(rosTopic => {
                 rosTopic.subscribe(msg => {
@@ -149,7 +149,7 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
-    callAction (name, req) {
+    callAction (name, req, unsubscribe) {
         const that = this;
         return new Promise((resolve, reject) => {
             this.getAction(name).then(rosAction => {
@@ -160,7 +160,7 @@ class RosUtil extends ROSLIB.Ros {
                 this.active_processes.push(goal);
                 goal.on('result', res => {
                     that.active_processes.splice(that.active_processes.indexOf(goal));
-                    rosAction.dispose();
+                    if (unsubscribe) rosAction.dispose();
                 });
                 goal.send();
                 resolve(true);
@@ -169,7 +169,7 @@ class RosUtil extends ROSLIB.Ros {
         });
     }
 
-    callSyncAction (name, req) {
+    callSyncAction (name, req, unsubscribe) {
         const that = this;
         return new Promise((resolve, reject) => {
             this.getAction(name).then(rosAction => {
@@ -180,7 +180,7 @@ class RosUtil extends ROSLIB.Ros {
                 this.active_processes.push(goal);
                 goal.on('result', res => {
                     that.active_processes.splice(that.active_processes.indexOf(goal));
-                    rosAction.dispose();
+                    if (unsubscribe) rosAction.dispose();
                     resolve(res);
                 });
                 goal.send();
