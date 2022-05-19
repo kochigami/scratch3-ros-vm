@@ -383,4 +383,7 @@ class Scratch3RosBase {
     // TODO: allow returning Promises for dynamic menus or update them periodically
 }
 
-module.exports = Scratch3RosBase;
+module.exports = {
+    Scratch3RosBase: Scratch3RosBase,
+    RosUtil: RosUtil
+};

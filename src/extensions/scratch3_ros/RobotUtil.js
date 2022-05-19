@@ -1,5 +1,5 @@
 const Cast = require('../../util/cast');
-const Scratch3RosBase = require('./RosUtil');
+const {Scratch3RosBase, RosUtil} = require('./RosUtil');
 const ROSLIB = require('roslib');
 const icon = require('./icon');
 
@@ -15,6 +15,15 @@ class Scratch3RobotBase extends Scratch3RosBase {
 
         this._stopApps = this._stopApps.bind(this);
         this.runtime.on('PROJECT_STOP_ALL', this._stopApps.bind(this));
+    }
+
+    connect (url) {
+        this.ros = new RosUtil(this.runtime, this.extensionId, {url: url});
+        this.ros.on('connection', () => {
+            console.log("Setting sound servers...");
+            this._setSoundServer(this.sound_server);
+            this._setSoundServer(this.sound_server_jp, true);
+        });
     }
 
     _stopApp (app, raiseError) {

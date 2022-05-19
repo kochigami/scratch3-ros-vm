@@ -2,7 +2,7 @@ const math = require('mathjs');
 const JSON = require('circular-json');
 const BlockType = require('../../extension-support/block-type');
 const ArgumentType = require('../../extension-support/argument-type');
-const Scratch3RosBase = require('./RosUtil');
+const {Scratch3RosBase} = require('./RosUtil');
 const icon = require('./icon');
 
 class Scratch3RosBlocks extends Scratch3RosBase {
