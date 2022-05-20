@@ -333,7 +333,9 @@ class Scratch3RosBase {
             },
             console.error);
         }
-        return this.topicNames.map(val => ({value: val, text: val}));
+        if (this.topicNames != 0)
+            return this.topicNames.map(val => ({value: val, text: val}));
+        return ['/topic'];
     }
 
     _updateActionList () {
@@ -346,7 +348,9 @@ class Scratch3RosBase {
             },
             console.error);
         }
-        return this.actionNames.map(val => ({value: val, text: val}));
+        if (this.actionNames.length != 0)
+            return this.actionNames.map(val => ({value: val, text: val}));
+        return ['/action'];
     }
 
     _updateServiceList () {
@@ -357,7 +361,9 @@ class Scratch3RosBase {
             },
             console.error);
         }
-        return this.serviceNames.map(val => ({value: val, text: val}));
+        if (this.serviceNames.length != 0)
+            return this.serviceNames.map(val => ({value: val, text: val}));
+        return ['/service'];
     }
 
     _updateParamList () {
@@ -368,7 +374,9 @@ class Scratch3RosBase {
             },
             console.error);
         }
-        return this.paramNames.map(val => ({value: val, text: val}));
+        if (this.paramNames.length != 0)
+            return this.paramNames.map(val => ({value: val, text: val}));
+        return ['/param'];
     }
 
     _updateVariableList () {

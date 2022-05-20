@@ -50,7 +50,9 @@ class Scratch3RobotBase extends Scratch3RosBase {
                      that.app_list = res.available_apps.map(val => ({name: val.name, text: val.display_name}))).
                 catch(console.error));
         };
-        return this.app_list;
+        if (this.app_list.length != 0)
+            return this.app_list;
+        return [{name:'app', text:'App'}];
     }
 
     _waitPromise (p) {

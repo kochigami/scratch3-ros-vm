@@ -41,7 +41,9 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
     }
 
     _spotNames () {
-        return Object.keys(this.map_spots);
+        let spots = Object.keys(this.map_spots);
+        if (spots.length != 0) return spots;
+        return ['spot'];
     }
 
     goSpot ({SPOT}) {
