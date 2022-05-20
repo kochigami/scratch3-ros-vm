@@ -220,12 +220,17 @@ class Scratch3RosBase {
         // generate randomized identifier to enable multiple
         // extensions with different masters
         let instanceId = (Math.random() + 1).toString(36).substring(2);
-        this.extensionName = extensionName;
         this.extensionId = extensionId + ':' + instanceId;
         this.masterURI = masterURI;
         this.runtime = runtime;
         this.firstConnect = firstConnect;
 
+        if (!this.firstConnect || !this.masterURI) {
+            this.masterURI = prompt('Master URI:');
+            this.firstConnect = true;
+        }
+
+        this.extensionName = extensionName + '\n' + this.masterURI;
         this.runtime.registerPeripheralExtension(this.extensionId, this);
 
         math.config({matrix: 'Array'});
