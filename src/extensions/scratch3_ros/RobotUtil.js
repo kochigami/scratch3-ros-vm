@@ -117,6 +117,18 @@ class Scratch3RobotBase extends Scratch3RosBase {
         }
     }
 
+    // Color utility
+    _randomizedColor (baseColor) {
+        let rate = 0x111111;
+        let modifier = (Math.random() + 1).toString(16).substring(2,8);
+        console.log('mod:' + modifier);
+        modifier = parseInt(modifier, 16);
+        let result = baseColor + (modifier & rate);
+        result = result.toString(16).padStart(6, 0);
+        console.log('res: ' + result);
+        return "#" + result;
+    }
+
     query ({TEXT}) {
         return confirm(TEXT);
     }

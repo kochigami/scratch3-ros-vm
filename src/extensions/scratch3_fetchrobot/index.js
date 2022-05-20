@@ -102,7 +102,7 @@ class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
             name: this.extensionName,
             showStatusButton: true,
 
-            color1: '#7797C6',
+            color1: this._randomizedColor(0x7797C6),
             menuIconURI: this.icon,
             
             blocks: [
