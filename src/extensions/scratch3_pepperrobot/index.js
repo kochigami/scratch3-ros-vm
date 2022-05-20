@@ -9,8 +9,7 @@ const icon = require('./icon');
 class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        let masterURI = prompt('Master URI:');
-        super('Pepper', 'pepperRobot', '/robotsound', '/robotsound_jp', runtime, masterURI);
+        super('Pepper', 'pepperRobot', '/robotsound', '/robotsound_jp', runtime);
         this.icon = icon;
 
         this.joint_server = '/pepper_robot/pose/joint_trajectory';

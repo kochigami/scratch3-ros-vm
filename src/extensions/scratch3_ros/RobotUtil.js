@@ -5,8 +5,9 @@ const icon = require('./icon');
 
 class Scratch3RobotBase extends Scratch3RosBase {
 
-    constructor(extensionName, extensionId, soundServer, soundServerJp, runtime, masterURI) {
-        super(extensionName, extensionId, runtime, masterURI);
+    constructor(extensionName, extensionId, soundServer, soundServerJp, runtime,
+                masterURI, firstConnect) {
+        super(extensionName, extensionId, runtime, masterURI, firstConnect);
         this.app_list = [{name:'app', text:'App'}];
         this.active_apps = [];
         this.sound_server = soundServer;

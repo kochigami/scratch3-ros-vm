@@ -3,10 +3,14 @@ const BlockType = require('../../extension-support/block-type');
 const Scratch3RobotBase = require('../scratch3_ros/RobotUtil');
 const icon = require('./icon');
 
+var Scratch3Go1RobotFirstConnect = true;
+
 class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
-        super('Go1', 'go1Robot', '/sound_play', '/robotsound_jp', runtime, 'localhost');
+        super('Go1', 'go1Robot', '/sound_play', '/robotsound_jp', runtime,
+              'localhost', Scratch3Go1RobotFirstConnect);
+        Scratch3Go1RobotFirstConnect = false;
         this.icon = icon;
         this.mode = 0;
         this.gaitType = 0;
