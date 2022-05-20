@@ -152,14 +152,15 @@ class ExtensionManager {
             if (this.isExtensionLoaded(extensionURL)) {
                 const message = `Rejecting attempt to load a second extension with ID ${extensionURL}`;
                 log.warn(message);
-                return Promise.resolve();
+                return Promise.resolve(extensionURL);
             }
 
             const extension = builtinExtensions[extensionURL]();
             const extensionInstance = new extension(this.runtime);
             const serviceName = this._registerInternalExtension(extensionInstance);
+            extensionURL = extensionInstance.extensionId;
             this._loadedExtensions.set(extensionURL, serviceName);
-            return Promise.resolve();
+            return Promise.resolve(extensionURL);
         }
 
         return new Promise((resolve, reject) => {
@@ -277,7 +278,7 @@ class ExtensionManager {
      */
     _prepareExtensionInfo (serviceName, extensionInfo) {
         extensionInfo = Object.assign({}, extensionInfo);
-        if (!/^[a-z0-9]+$/i.test(extensionInfo.id)) {
+        if (!/^[a-z0-9:]+$/i.test(extensionInfo.id)) {
             throw new Error('Invalid extension id');
         }
         extensionInfo.name = extensionInfo.name || extensionInfo.id;

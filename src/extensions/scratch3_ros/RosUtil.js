@@ -217,8 +217,11 @@ class RosUtil extends ROSLIB.Ros {
 class Scratch3RosBase {
 
     constructor (extensionName, extensionId, runtime, masterURI) {
+        // generate randomized identifier to enable multiple
+        // extensions with different masters
+        let instanceId = (Math.random() + 1).toString(36).substring(2);
         this.extensionName = extensionName;
-        this.extensionId = extensionId;
+        this.extensionId = extensionId + ':' + instanceId;
         this.masterURI = masterURI;
         this.runtime = runtime;
         this.firstConnect = true;
