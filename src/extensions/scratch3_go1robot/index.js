@@ -9,7 +9,7 @@ class Scratch3Go1RobotBlocks extends Scratch3RobotBase {
 
     constructor(runtime) {
         super('Go1', 'go1Robot', '/sound_play', '/robotsound_jp', runtime,
-              '133.11.216.195', Scratch3Go1RobotFirstConnect);
+              'sparky', Scratch3Go1RobotFirstConnect);
         Scratch3Go1RobotFirstConnect = false;
         this.icon = icon;
         this.mode = 0;
