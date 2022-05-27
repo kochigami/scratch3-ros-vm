@@ -517,8 +517,9 @@ class VirtualMachine extends EventEmitter {
 
         extensions.extensionIDs.forEach(extensionID => {
             if (!this.extensionManager.isExtensionLoaded(extensionID)) {
-                const extensionURL = extensions.extensionURLs.get(extensionID) || extensionID;
-                extensionPromises.push(this.extensionManager.loadExtensionURL(extensionURL));
+                const extensionURL = extensions.extensionURLs.get(extensionID) ||
+                    extensionID ? extensionID.split(':')[0] : undefined;
+                extensionPromises.push(this.extensionManager.loadExtensionURL(extensionURL, extensionID));
             }
         });
 

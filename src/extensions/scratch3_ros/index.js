@@ -7,8 +7,8 @@ const icon = require('./icon');
 
 class Scratch3RosBlocks extends Scratch3RosBase {
 
-    constructor(runtime) {
-        super('ROS', 'ros', runtime);
+    constructor(runtime, extensionId) {
+        super('ROS', extensionId ? extensionId : 'ros', runtime);
     }
 
     // customize to handle topics advertised from Scratch

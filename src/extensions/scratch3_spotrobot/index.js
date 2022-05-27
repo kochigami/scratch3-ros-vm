@@ -7,8 +7,9 @@ var Scratch3SpotRobotFirstConnect = true;
 
 class Scratch3SpotRobotBlocks extends Scratch3RobotBase {
 
-    constructor(runtime) {
-        super('Spot', 'spotRobot', '/robotsound', '/robotsound_jp', runtime,
+    constructor(runtime, extensionId) {
+        super('Spot', extensionId ? extensionId : 'spotRobot',
+              '/robotsound', '/robotsound_jp', runtime,
               'belka', Scratch3SpotRobotFirstConnect);
         Scratch3SpotRobotFirstConnect = false;
         this.icon = icon;

@@ -217,10 +217,6 @@ class RosUtil extends ROSLIB.Ros {
 class Scratch3RosBase {
 
     constructor (extensionName, extensionId, runtime, masterURI, firstConnect=true) {
-        // generate randomized identifier to enable multiple
-        // extensions with different masters
-        let instanceId = (Math.random() + 1).toString(36).substring(2);
-        this.extensionId = extensionId + ':' + instanceId;
         this.masterURI = masterURI;
         this.runtime = runtime;
         this.firstConnect = firstConnect;
@@ -228,6 +224,19 @@ class Scratch3RosBase {
         if (!this.firstConnect || !this.masterURI) {
             this.masterURI = prompt('Master URI:');
             this.firstConnect = true;
+        }
+
+        if (!extensionId.includes(":")) {
+            // generate randomized identifier to enable multiple
+            // extensions with different masters
+            let instanceId = (Math.random() + 1).toString(36).substring(2);
+            this.extensionId = extensionId + ':' + instanceId;
+        }
+        else {
+            // keep the same instanceId when loading from file
+            // also, manually start the connection
+            this.extensionId = extensionId;
+            this.connect('ws://' + this.masterURI + ':9090');
         }
 
         this.extensionName = extensionName + '\n' + this.masterURI;

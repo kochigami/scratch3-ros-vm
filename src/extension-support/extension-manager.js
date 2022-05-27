@@ -146,8 +146,9 @@ class ExtensionManager {
      * @param {string} extensionURL - the URL for the extension to load OR the ID of an internal extension
      * @returns {Promise} resolved once the extension is loaded and initialized or rejected on failure
      */
-    loadExtensionURL (extensionURL) {
-        if (builtinExtensions.hasOwnProperty(extensionURL)) {
+    loadExtensionURL (extensionURL, extensionId) {
+        // load from URL. If extensionId is also provided, pass it to the constructor
+        if (builtinExtensions.hasOwnProperty(extensionURL.split(":")[0])) {
             /** @TODO dupe handling for non-builtin extensions. See commit 670e51d33580e8a2e852b3b038bb3afc282f81b9 */
             if (this.isExtensionLoaded(extensionURL)) {
                 const message = `Rejecting attempt to load a second extension with ID ${extensionURL}`;
@@ -156,7 +157,7 @@ class ExtensionManager {
             }
 
             const extension = builtinExtensions[extensionURL]();
-            const extensionInstance = new extension(this.runtime);
+            const extensionInstance = new extension(this.runtime, extensionId);
             const serviceName = this._registerInternalExtension(extensionInstance);
             if (extensionInstance.extensionId)
                 extensionURL = extensionInstance.extensionId;

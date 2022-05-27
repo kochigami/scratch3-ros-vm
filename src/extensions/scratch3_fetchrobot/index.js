@@ -7,8 +7,9 @@ var Scratch3FetchRobotFirstConnect = true;
 
 class Scratch3FetchRobotBlocks extends Scratch3RobotBase {
 
-    constructor(runtime) {
-        super('Fetch', 'fetchRobot', '/sound_play', '/robotsound_jp', runtime,
+    constructor(runtime, extensionId) {
+        super('Fetch', extensionId ? extensionId : 'fetchRobot',
+              '/sound_play', '/robotsound_jp', runtime,
               'fetch1075', Scratch3FetchRobotFirstConnect);
         Scratch3FetchRobotFirstConnect = false;
         this.icon = icon;
