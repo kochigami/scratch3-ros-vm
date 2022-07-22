@@ -137,6 +137,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
+    deai_1 () {
+	return this.ros.callService('/deai_1', {});
+    }
+
+    deai_2 () {
+	return this.ros.callService('/deai_2', {});
+    }
+
     getInfo () {
         return {
             id: this.extensionId,
@@ -235,6 +243,22 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                         }
                     }
                 },
+		'---',
+		{
+		    opcode: 'deai_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'deai_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'deai_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'deai_2',
+		    arguments: {
+			}
+		},
             ],
             menus: {
                 booleanMenu: ['true', 'false'],
