@@ -137,12 +137,80 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
-    episode_11 () {
-	return this.ros.callService('/episode_11', {});
+    greeting () {
+	return this.ros.callService('/greeting', {});
     }
 
-    episode_12 () {
-	return this.ros.callService('/episode_12', {});
+    look_at_kochisan () {
+	return this.ros.callService('/look_at_kochisan', {});
+    }
+
+    episode_introduction () {
+	return this.ros.callService('/episode_introduction', {});
+    }
+
+    episode_0_1 () {
+	return this.ros.callService('/episode_0_1', {});
+    }
+
+    episode_0_2 () {
+	return this.ros.callService('/episode_0_2', {});
+    }
+
+    episode_1_1 () {
+	return this.ros.callService('/episode_1_1', {});
+    }
+
+    episode_1_2 () {
+	return this.ros.callService('/episode_1_2', {});
+    }
+
+    episode_1_3 () {
+	return this.ros.callService('/episode_1_3', {});
+    }
+
+    episode_1_4 () {
+	return this.ros.callService('/episode_1_4', {});
+    }
+
+    episode_2 () {
+	return this.ros.callService('/episode_2', {});
+    }
+
+    episode_3_1 () {
+	return this.ros.callService('/episode_3_1', {});
+    }
+
+    episode_3_2 () {
+	return this.ros.callService('/episode_3_2', {});
+    }
+
+    episode_3_3 () {
+	return this.ros.callService('/episode_3_3', {});
+    }
+
+    episode_4_1 () {
+	return this.ros.callService('/episode_4_1', {});
+    }
+
+    episode_4_2 () {
+	return this.ros.callService('/episode_4_2', {});
+    }
+
+    episode_5_1 () {
+	return this.ros.callService('/episode_5_1', {});
+    }
+
+    episode_5_2 () {
+	return this.ros.callService('/episode_5_2', {});
+    }
+
+    episode_summary () {
+	return this.ros.callService('/episode_summary', {});
+    }
+
+    episode_6 () {
+	return this.ros.callService('/episode_6', {});
     }
 
     getInfo () {
@@ -245,17 +313,153 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                 },
 		'---',
 		{
-		    opcode: 'episode_11',
+		    opcode: 'greeting',
 		    blockType: BlockType.COMMAND,
-		    text: 'episode_11',
+		    text: 'greeting',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'episode_12',
+		    opcode: 'look_at_kochisan',
 		    blockType: BlockType.COMMAND,
-		    text: 'episode_12',
+		    text: 'look_at_kochisan',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_introduction',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_introduction',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_0_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_0_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_0_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_0_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_1_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_1_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_1_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_1_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_1_3',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_1_3',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_1_4',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_1_4',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_3_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_3_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_3_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_3_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_3_3',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_3_3',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_4_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_4_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_4_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_4_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_5_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_5_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_5_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_5_2',
+		    arguments: {
+		        }
+		},
+		'---',
+		{
+		    opcode: 'episode_summary',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_summary',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'episode_6',
+		    blockType: BlockType.COMMAND,
+		    text: 'episode_6',
 		    arguments: {
 			}
 		},
