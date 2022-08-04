@@ -141,6 +141,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this.ros.callService('/greeting', {});
     }
 
+    listening () {
+	return this.ros.callService('/listening', {});
+    }
+
     look_at_kochisan () {
 	return this.ros.callService('/look_at_kochisan', {});
     }
@@ -211,6 +215,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 
     episode_6 () {
 	return this.ros.callService('/episode_6', {});
+    }
+
+    end_greeting () {
+	return this.ros.callService('/end_greeting', {});
     }
 
     getInfo () {
@@ -324,6 +332,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'look_at_kochisan',
 		    blockType: BlockType.COMMAND,
 		    text: 'look_at_kochisan',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'listening',
+		    blockType: BlockType.COMMAND,
+		    text: 'listening',
 		    arguments: {
 			}
 		},
@@ -460,6 +476,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'episode_6',
 		    blockType: BlockType.COMMAND,
 		    text: 'episode_6',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'end_greeting',
+		    blockType: BlockType.COMMAND,
+		    text: 'end_greeting',
 		    arguments: {
 			}
 		},
