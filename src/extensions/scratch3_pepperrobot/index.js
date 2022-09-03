@@ -137,6 +137,78 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
+    take_a_bow () {
+	return this.ros.callService('/take_a_bow', {});
+    }
+
+    self_introduction_1 () {
+	return this.ros.callService('/self_introduction_1', {});
+    }
+
+    question1_1 () {
+	return this.ros.callService('/question1_1', {});
+    }
+
+    explanation1_1 () {
+	return this.ros.callService('/explanation1_1', {});
+    }
+
+    question1_2 () {
+	return this.ros.callService('/question1_2', {});
+    }
+
+    explanation1_21 () {
+	return this.ros.callService('/explanation1_21', {});
+    }
+
+    explanation1_22 () {
+	return this.ros.callService('/explanation1_22', {});
+    }
+
+    question1_3 () {
+	return this.ros.callService('/question1_3', {});
+    }
+
+    summary_1 () {
+	return this.ros.callService('/summary_1', {});
+    }
+
+    self_introduction_2 () {
+	return this.ros.callService('/self_introduction_2', {});
+    }
+
+    question2_1 () {
+	return this.ros.callService('/question2_1', {});
+    }
+
+    question2_2 () {
+	return this.ros.callService('/question2_2', {});
+    }
+
+    explanation2_1 () {
+	return this.ros.callService('/explanation2_1', {});
+    }
+
+    question2_3 () {
+	return this.ros.callService('/question2_3', {});
+    }
+
+    summary_2 () {
+	return this.ros.callService('/summary_2', {});
+    }
+
+    look_at_presenter () {
+	return this.ros.callService('/look_at_presenter', {});
+    }
+
+    ring_a_bell () {
+	return this.ros.callService('/ring_a_bell', {});
+    }
+
+    hakushu () {
+	return this.ros.callService('/hakushu', {});
+    }
+
     getInfo () {
         return {
             id: this.extensionId,
@@ -235,6 +307,150 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                         }
                     }
                 },
+		'---',
+		{
+		    opcode: 'take_a_bow',
+		    blockType: BlockType.COMMAND,
+		    text: 'take_a_bow',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'self_introduction_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'self_introduction_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'question1_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'question1_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'explanation1_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'explanation1_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'question1_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'question1_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'explanation1_21',
+		    blockType: BlockType.COMMAND,
+		    text: 'explanation1_21',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'explanation1_22',
+		    blockType: BlockType.COMMAND,
+		    text: 'explanation1_22',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'question1_3',
+		    blockType: BlockType.COMMAND,
+		    text: 'question1_3',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'summary_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'summary_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'self_introduction_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'self_introduction_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'question2_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'question2_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'question2_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'question2_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'explanation2_1',
+		    blockType: BlockType.COMMAND,
+		    text: 'explanation2_1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'question2_3',
+		    blockType: BlockType.COMMAND,
+		    text: 'question2_3',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'summary_2',
+		    blockType: BlockType.COMMAND,
+		    text: 'summary_2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'look_at_presenter',
+		    blockType: BlockType.COMMAND,
+		    text: 'look_at_presenter',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'ring_a_bell',
+		    blockType: BlockType.COMMAND,
+		    text: 'ring_a_bell',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'hakushu',
+		    blockType: BlockType.COMMAND,
+		    text: 'hakushu',
+		    arguments: {
+			}
+		},
             ],
             menus: {
                 booleanMenu: ['true', 'false'],
