@@ -137,16 +137,20 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
+    hello () {
+	return this.ros.callService('/hello', {});
+    }
+
     greeting () {
 	return this.ros.callService('/greeting', {});
     }
 
-    listening () {
-	return this.ros.callService('/listening', {});
-    }
-
     look_at_kochisan () {
 	return this.ros.callService('/look_at_kochisan', {});
+    }
+
+    listening () {
+	return this.ros.callService('/listening', {});
     }
 
     episode_introduction () {
@@ -319,6 +323,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                         }
                     }
                 },
+		'---',
+		{
+		    opcode: 'hello',
+		    blockType: BlockType.COMMAND,
+		    text: 'hello',
+		    arguments: {
+			}
+		},
 		'---',
 		{
 		    opcode: 'greeting',
