@@ -137,76 +137,85 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
+    _callServiceAndReturn (name, req) {
+        if (req === undefined) {
+            req = {};
+        }
+        return this.ros.callService(name, req).
+            then(val => true).
+            catch(err => this._reportError(err));
+    }
+
     take_a_bow () {
-	return this.ros.callService('/take_a_bow', {});
+	return this._callServiceAndReturn('/take_a_bow');
     }
 
     self_introduction_1 () {
-	return this.ros.callService('/self_introduction_1', {});
+	return this._callServiceAndReturn('/self_introduction_1');
     }
 
     question1_1 () {
-	return this.ros.callService('/question1_1', {});
+	return this._callServiceAndReturn('/question1_1');
     }
 
     explanation1_1 () {
-	return this.ros.callService('/explanation1_1', {});
+	return this._callServiceAndReturn('/explanation1_1');
     }
 
     question1_2 () {
-	return this.ros.callService('/question1_2', {});
+	return this._callServiceAndReturn('/question1_2');
     }
 
     explanation1_21 () {
-	return this.ros.callService('/explanation1_21', {});
+	return this._callServiceAndReturn('/explanation1_21');
     }
 
     explanation1_22 () {
-	return this.ros.callService('/explanation1_22', {});
+	return this._callServiceAndReturn('/explanation1_22');
     }
 
     question1_3 () {
-	return this.ros.callService('/question1_3', {});
+	return this._callServiceAndReturn('/question1_3');
     }
 
     summary_1 () {
-	return this.ros.callService('/summary_1', {});
+	return this._callServiceAndReturn('/summary_1');
     }
 
     self_introduction_2 () {
-	return this.ros.callService('/self_introduction_2', {});
+	return this._callServiceAndReturn('/self_introduction_2');
     }
 
     question2_1 () {
-	return this.ros.callService('/question2_1', {});
+	return this._callServiceAndReturn('/question2_1');
     }
 
     question2_2 () {
-	return this.ros.callService('/question2_2', {});
+	return this._callServiceAndReturn('/question2_2');
     }
 
     explanation2_1 () {
-	return this.ros.callService('/explanation2_1', {});
+	return this._callServiceAndReturn('/explanation2_1');
     }
 
     question2_3 () {
-	return this.ros.callService('/question2_3', {});
+	return this._callServiceAndReturn('/question2_3');
     }
 
     summary_2 () {
-	return this.ros.callService('/summary_2', {});
+	return this._callServiceAndReturn('/summary_2');
     }
 
     look_at_presenter () {
-	return this.ros.callService('/look_at_presenter', {});
+	return this._callServiceAndReturn('/look_at_presenter');
     }
 
     ring_a_bell () {
-	return this.ros.callService('/ring_a_bell', {});
+	return this._callServiceAndReturn('/ring_a_bell');
     }
 
     hakushu () {
-	return this.ros.callService('/hakushu', {});
+	return this._callServiceAndReturn('/hakushu');
     }
 
     getInfo () {
