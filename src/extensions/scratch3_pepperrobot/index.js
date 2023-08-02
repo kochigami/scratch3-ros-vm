@@ -154,6 +154,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/self_introduction2');
     }
 
+    self_introduction3 () {
+	return this._callServiceAndReturn('/self_introduction3');
+    }
+
     sentence1 () {
 	return this._callServiceAndReturn('/sentence1');
     }
@@ -301,6 +305,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'self_introduction2',
 		    blockType: BlockType.COMMAND,
 		    text: 'self_introduction2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'self_introduction3',
+		    blockType: BlockType.COMMAND,
+		    text: 'self_introduction3',
 		    arguments: {
 			}
 		},
