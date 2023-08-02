@@ -146,76 +146,48 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
-    take_a_bow () {
-	return this._callServiceAndReturn('/take_a_bow');
+    self_introduction1 () {
+	return this._callServiceAndReturn('/self_introduction1');
     }
 
-    self_introduction_1 () {
-	return this._callServiceAndReturn('/self_introduction_1');
+    self_introduction2 () {
+	return this._callServiceAndReturn('/self_introduction2');
     }
 
-    question1_1 () {
-	return this._callServiceAndReturn('/question1_1');
+    sentence1 () {
+	return this._callServiceAndReturn('/sentence1');
     }
 
-    explanation1_1 () {
-	return this._callServiceAndReturn('/explanation1_1');
+    sentence2 () {
+	return this._callServiceAndReturn('/sentence2');
     }
 
-    question1_2 () {
-	return this._callServiceAndReturn('/question1_2');
+    sentence3 () {
+	return this._callServiceAndReturn('/sentence3');
     }
 
-    explanation1_21 () {
-	return this._callServiceAndReturn('/explanation1_21');
+    sentence4 () {
+	return this._callServiceAndReturn('/sentence4');
     }
 
-    explanation1_22 () {
-	return this._callServiceAndReturn('/explanation1_22');
+    sentence5 () {
+	return this._callServiceAndReturn('/sentence5');
     }
 
-    question1_3 () {
-	return this._callServiceAndReturn('/question1_3');
+    look_right () {
+	return this._callServiceAndReturn('/look_right');
     }
 
-    summary_1 () {
-	return this._callServiceAndReturn('/summary_1');
+    look_left () {
+	return this._callServiceAndReturn('/look_left');
     }
 
-    self_introduction_2 () {
-	return this._callServiceAndReturn('/self_introduction_2');
+    thinking_start () {
+	return this._callServiceAndReturn('/thinking_start');
     }
 
-    question2_1 () {
-	return this._callServiceAndReturn('/question2_1');
-    }
-
-    question2_2 () {
-	return this._callServiceAndReturn('/question2_2');
-    }
-
-    explanation2_1 () {
-	return this._callServiceAndReturn('/explanation2_1');
-    }
-
-    question2_3 () {
-	return this._callServiceAndReturn('/question2_3');
-    }
-
-    summary_2 () {
-	return this._callServiceAndReturn('/summary_2');
-    }
-
-    look_at_presenter () {
-	return this._callServiceAndReturn('/look_at_presenter');
-    }
-
-    ring_a_bell () {
-	return this._callServiceAndReturn('/ring_a_bell');
-    }
-
-    hakushu () {
-	return this._callServiceAndReturn('/hakushu');
+    thinking_stop () {
+	return this._callServiceAndReturn('/thinking_stop');
     }
 
     getInfo () {
@@ -318,155 +290,100 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                 },
 		'---',
 		{
-		    opcode: 'take_a_bow',
+		    opcode: 'self_introduction1',
 		    blockType: BlockType.COMMAND,
-		    text: 'take_a_bow',
+		    text: 'self_introduction1',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'self_introduction_1',
+		    opcode: 'self_introduction2',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction_1',
+		    text: 'self_introduction2',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'question1_1',
+		    opcode: 'sentence1',
 		    blockType: BlockType.COMMAND,
-		    text: 'question1_1',
+		    text: 'sentence1',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'explanation1_1',
+		    opcode: 'sentence2',
 		    blockType: BlockType.COMMAND,
-		    text: 'explanation1_1',
+		    text: 'sentence2',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'question1_2',
+		    opcode: 'sentence3',
 		    blockType: BlockType.COMMAND,
-		    text: 'question1_2',
+		    text: 'sentence3',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'explanation1_21',
+		    opcode: 'sentence4',
 		    blockType: BlockType.COMMAND,
-		    text: 'explanation1_21',
+		    text: 'sentence4',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'explanation1_22',
+		    opcode: 'sentence5',
 		    blockType: BlockType.COMMAND,
-		    text: 'explanation1_22',
+		    text: 'sentence5',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'question1_3',
+		    opcode: 'look_right',
 		    blockType: BlockType.COMMAND,
-		    text: 'question1_3',
+		    text: 'look_right',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'summary_1',
+		    opcode: 'look_left',
 		    blockType: BlockType.COMMAND,
-		    text: 'summary_1',
+		    text: 'look_left',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'self_introduction_2',
+		    opcode: 'thinking_start',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction_2',
+		    text: 'thinking_start',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'question2_1',
+		    opcode: 'thinking_stop',
 		    blockType: BlockType.COMMAND,
-		    text: 'question2_1',
+		    text: 'thinking_stop',
 		    arguments: {
 			}
 		},
 		'---',
-		{
-		    opcode: 'question2_2',
-		    blockType: BlockType.COMMAND,
-		    text: 'question2_2',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'explanation2_1',
-		    blockType: BlockType.COMMAND,
-		    text: 'explanation2_1',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'question2_3',
-		    blockType: BlockType.COMMAND,
-		    text: 'question2_3',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'summary_2',
-		    blockType: BlockType.COMMAND,
-		    text: 'summary_2',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_at_presenter',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_at_presenter',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'ring_a_bell',
-		    blockType: BlockType.COMMAND,
-		    text: 'ring_a_bell',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'hakushu',
-		    blockType: BlockType.COMMAND,
-		    text: 'hakushu',
-		    arguments: {
-			}
-		},
-            ],
+	    ],
             menus: {
                 booleanMenu: ['true', 'false'],
                 poseMenu: '_poseNames'
             }
         };
     }
-}
+    }
 
 module.exports = Scratch3PepperRobotBlocks;
