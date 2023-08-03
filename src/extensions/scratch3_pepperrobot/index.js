@@ -178,6 +178,18 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/sentence5');
     }
 
+    sentence6 () {
+	return this._callServiceAndReturn('/sentence6');
+    }
+
+    closing1 () {
+	return this._callServiceAndReturn('/closing1');
+    }
+
+    closing2 () {
+	return this._callServiceAndReturn('/closing2');
+    }
+
     look_right () {
 	return this._callServiceAndReturn('/look_right');
     }
@@ -353,6 +365,30 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'sentence5',
 		    blockType: BlockType.COMMAND,
 		    text: 'sentence5',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'sentence6',
+		    blockType: BlockType.COMMAND,
+		    text: 'sentence6',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'closing1',
+		    blockType: BlockType.COMMAND,
+		    text: 'closing1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'closing2',
+		    blockType: BlockType.COMMAND,
+		    text: 'closing2',
 		    arguments: {
 			}
 		},
