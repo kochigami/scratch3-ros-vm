@@ -146,6 +146,18 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
+    test () {
+	return this._callServiceAndReturn('/test');
+    }
+
+    backup_num_of_lang () {
+	return this._callServiceAndReturn('/backup_num_of_lang');
+    }
+
+    backup_turing_test () {
+	return this._callServiceAndReturn('/backup_turing_test');
+    }
+    
     self_introduction1 () {
 	return this._callServiceAndReturn('/self_introduction1');
     }
@@ -309,6 +321,30 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'self_introduction1',
 		    blockType: BlockType.COMMAND,
 		    text: 'self_introduction1',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'test',
+		    blockType: BlockType.COMMAND,
+		    text: 'test',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'backup_num_of_lang',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_num_of_lang',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'backup_turing_test',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_turing_test',
 		    arguments: {
 			}
 		},
