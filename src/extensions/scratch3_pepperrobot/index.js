@@ -318,14 +318,6 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                 },
 		'---',
 		{
-		    opcode: 'self_introduction1',
-		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction1',
-		    arguments: {
-			}
-		},
-		'---',
-		{
 		    opcode: 'test',
 		    blockType: BlockType.COMMAND,
 		    text: 'test',
@@ -345,6 +337,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'backup_turing_test',
 		    blockType: BlockType.COMMAND,
 		    text: 'backup_turing_test',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'self_introduction1',
+		    blockType: BlockType.COMMAND,
+		    text: 'self_introduction1',
 		    arguments: {
 			}
 		},
