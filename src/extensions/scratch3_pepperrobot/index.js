@@ -157,6 +157,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
     backup_turing_test () {
 	return this._callServiceAndReturn('/backup_turing_test');
     }
+
+    backup_creating_human_like_behavior_is_difficult () {
+	return this._callServiceAndReturn('/backup_creating_human_like_behavior_is_difficult');
+    }
+
+    backup_future_ai_comminucation_support () {
+	return this._callServiceAndReturn('/backup_future_ai_comminucation_support');
+    }
     
     self_introduction1 () {
 	return this._callServiceAndReturn('/self_introduction1');
@@ -184,14 +192,6 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 
     sentence4 () {
 	return this._callServiceAndReturn('/sentence4');
-    }
-
-    sentence5 () {
-	return this._callServiceAndReturn('/sentence5');
-    }
-
-    sentence6 () {
-	return this._callServiceAndReturn('/sentence6');
     }
 
     closing1 () {
@@ -342,6 +342,22 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
+		    opcode: 'backup_creating_human_like_behavior_is_difficult',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_creating_human_like_behavior_is_difficult',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'backup_future_ai_comminucation_support',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_future_ai_comminucation_support',
+		    arguments: {
+			}
+		},
+		'---',
+		{
 		    opcode: 'self_introduction1',
 		    blockType: BlockType.COMMAND,
 		    text: 'self_introduction1',
@@ -393,22 +409,6 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'sentence4',
 		    blockType: BlockType.COMMAND,
 		    text: 'sentence4',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'sentence5',
-		    blockType: BlockType.COMMAND,
-		    text: 'sentence5',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'sentence6',
-		    blockType: BlockType.COMMAND,
-		    text: 'sentence6',
 		    arguments: {
 			}
 		},
