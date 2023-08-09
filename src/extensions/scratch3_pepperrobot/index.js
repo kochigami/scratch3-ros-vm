@@ -150,48 +150,52 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/test');
     }
 
+    self_introduction_raika1 () {
+	return this._callServiceAndReturn('/self_introduction_raika1');
+    }
+
+    self_introduction_raika2 () {
+	return this._callServiceAndReturn('/self_introduction_raika2');
+    }
+
+    nice_to_meet_you () {
+	return this._callServiceAndReturn('/nice_to_meet_you');
+    }
+
     backup_num_of_lang () {
 	return this._callServiceAndReturn('/backup_num_of_lang');
+    }
+
+    language_handling_machine () {
+	return this._callServiceAndReturn('/language_handling_machine');
     }
 
     backup_turing_test () {
 	return this._callServiceAndReturn('/backup_turing_test');
     }
 
+    thanks_to_nlp () {
+	return this._callServiceAndReturn('/thanks_to_nlp');
+    }
+
+    wow_neuron () {
+	return this._callServiceAndReturn('/wow_neuron');
+    }
+
+    really () {
+	return this._callServiceAndReturn('/really');
+    }
+
+    you_look_rude () {
+	return this._callServiceAndReturn('/you_look_rude');
+    }
+
     backup_creating_human_like_behavior_is_difficult () {
 	return this._callServiceAndReturn('/backup_creating_human_like_behavior_is_difficult');
     }
 
-    backup_future_ai_comminucation_support () {
-	return this._callServiceAndReturn('/backup_future_ai_comminucation_support');
-    }
-    
-    self_introduction1 () {
-	return this._callServiceAndReturn('/self_introduction1');
-    }
-
-    self_introduction2 () {
-	return this._callServiceAndReturn('/self_introduction2');
-    }
-
-    self_introduction3 () {
-	return this._callServiceAndReturn('/self_introduction3');
-    }
-
-    sentence1 () {
-	return this._callServiceAndReturn('/sentence1');
-    }
-
-    sentence2 () {
-	return this._callServiceAndReturn('/sentence2');
-    }
-
-    sentence3 () {
-	return this._callServiceAndReturn('/sentence3');
-    }
-
-    sentence4 () {
-	return this._callServiceAndReturn('/sentence4');
+    future_ai_comminucation_support () {
+	return this._callServiceAndReturn('/future_ai_comminucation_support');
     }
 
     closing1 () {
@@ -350,65 +354,73 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
-		    opcode: 'backup_future_ai_comminucation_support',
+		    opcode: 'self_introduction_raika1',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_future_ai_comminucation_support',
+		    text: 'self_introduction_raika1',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'self_introduction1',
+		    opcode: 'self_introduction_raika2',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction1',
+		    text: 'self_introduction_raika2',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'self_introduction2',
+		    opcode: 'nice_to_meet_you',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction2',
+		    text: 'nice_to_meet_you',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'self_introduction3',
+		    opcode: 'language_handling_machine',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction3',
+		    text: 'language_handling_machine',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'sentence1',
+		    opcode: 'thanks_to_nlp',
 		    blockType: BlockType.COMMAND,
-		    text: 'sentence1',
+		    text: 'thanks_to_nlp',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'sentence2',
+		    opcode: 'wow_neuron',
 		    blockType: BlockType.COMMAND,
-		    text: 'sentence2',
+		    text: 'wow_neuron',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'sentence3',
+		    opcode: 'really',
 		    blockType: BlockType.COMMAND,
-		    text: 'sentence3',
+		    text: 'really',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'sentence4',
+		    opcode: 'you_look_rude',
 		    blockType: BlockType.COMMAND,
-		    text: 'sentence4',
+		    text: 'you_look_rude',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'future_ai_comminucation_support',
+		    blockType: BlockType.COMMAND,
+		    text: 'future_ai_comminucation_support',
 		    arguments: {
 			}
 		},
