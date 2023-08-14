@@ -330,30 +330,6 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
-		    opcode: 'backup_num_of_lang',
-		    blockType: BlockType.COMMAND,
-		    text: 'backup_num_of_lang',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'backup_turing_test',
-		    blockType: BlockType.COMMAND,
-		    text: 'backup_turing_test',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'backup_creating_human_like_behavior_is_difficult',
-		    blockType: BlockType.COMMAND,
-		    text: 'backup_creating_human_like_behavior_is_difficult',
-		    arguments: {
-			}
-		},
-		'---',
-		{
 		    opcode: 'self_introduction_raika1',
 		    blockType: BlockType.COMMAND,
 		    text: 'self_introduction_raika1',
@@ -378,9 +354,25 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
+		    opcode: 'backup_num_of_lang',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_num_of_lang',
+		    arguments: {
+			}
+		},
+		'---',
+		{
 		    opcode: 'language_handling_machine',
 		    blockType: BlockType.COMMAND,
 		    text: 'language_handling_machine',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'backup_turing_test',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_turing_test',
 		    arguments: {
 			}
 		},
@@ -416,6 +408,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    arguments: {
 			}
 		},
+		'---',
+		{
+		    opcode: 'backup_creating_human_like_behavior_is_difficult',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_creating_human_like_behavior_is_difficult',
+		    arguments: {
+			}
+		},		
 		'---',
 		{
 		    opcode: 'future_ai_comminucation_support',
