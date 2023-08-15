@@ -190,12 +190,16 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/you_look_rude');
     }
 
+    backup_konnichiwa () {
+	return this._callServiceAndReturn('/backup_konnichiwa');
+    }
+    
     backup_creating_human_like_behavior_is_difficult () {
 	return this._callServiceAndReturn('/backup_creating_human_like_behavior_is_difficult');
     }
 
-    future_ai_comminucation_support () {
-	return this._callServiceAndReturn('/future_ai_comminucation_support');
+    backup_future_ai_comminucation_support () {
+	return this._callServiceAndReturn('/backup_future_ai_comminucation_support');
     }
 
     closing1 () {
@@ -206,6 +210,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/closing2');
     }
 
+    look_front () {
+	return this._callServiceAndReturn('/look_front');
+    }
+    
     look_right () {
 	return this._callServiceAndReturn('/look_right');
     }
@@ -410,6 +418,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
+		    opcode: 'backup_konnichiwa',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_konnichiwa',
+		    arguments: {
+			}
+		},
+		'---',
+		{
 		    opcode: 'backup_creating_human_like_behavior_is_difficult',
 		    blockType: BlockType.COMMAND,
 		    text: 'backup_creating_human_like_behavior_is_difficult',
@@ -418,9 +434,9 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},		
 		'---',
 		{
-		    opcode: 'future_ai_comminucation_support',
+		    opcode: 'backup_future_ai_comminucation_support',
 		    blockType: BlockType.COMMAND,
-		    text: 'future_ai_comminucation_support',
+		    text: 'backup_future_ai_comminucation_support',
 		    arguments: {
 			}
 		},
@@ -437,6 +453,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: 'closing2',
 		    blockType: BlockType.COMMAND,
 		    text: 'closing2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'look_front',
+		    blockType: BlockType.COMMAND,
+		    text: 'look_front',
 		    arguments: {
 			}
 		},
