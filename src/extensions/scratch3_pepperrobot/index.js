@@ -182,6 +182,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/wow_neuron');
     }
 
+    human_neuron () {
+	return this._callServiceAndReturn('/human_neuron');
+    }
+
     really () {
 	return this._callServiceAndReturn('/really');
     }
@@ -395,6 +399,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		'---',
 		{
 		    opcode: 'wow_neuron',
+		    blockType: BlockType.COMMAND,
+		    text: 'wow_neuron',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'human_neuron',
 		    blockType: BlockType.COMMAND,
 		    text: 'wow_neuron',
 		    arguments: {
