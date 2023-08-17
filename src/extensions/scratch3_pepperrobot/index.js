@@ -238,6 +238,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/closing2');
     }
 
+    feel_free_to_ask () {
+	return this._callServiceAndReturn('/feel_free_to_ask');
+    }
+
     look_front () {
 	return this._callServiceAndReturn('/look_front');
     }
@@ -366,177 +370,185 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
-		    opcode: 'self_introduction_raika1',
+		    opcode: '1_self_introduction_raika1',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction_raika1',
+		    text: '1_self_introduction_raika1',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'self_introduction_raika2',
+		    opcode: '2_self_introduction_raika2',
 		    blockType: BlockType.COMMAND,
-		    text: 'self_introduction_raika2',
+		    text: '2_self_introduction_raika2',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'nice_to_meet_you',
+		    opcode: '3_nice_to_meet_you',
 		    blockType: BlockType.COMMAND,
-		    text: 'nice_to_meet_you',
+		    text: '3_nice_to_meet_you',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'two_view_points',
+		    opcode: '4_two_view_points',
 		    blockType: BlockType.COMMAND,
-		    text: 'two_view_points',
+		    text: '4_two_view_points',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'backup_num_of_lang',
+		    opcode: '5_backup_num_of_lang',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_num_of_lang',
+		    text: '5_backup_num_of_lang',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'language_handling_machine',
+		    opcode: '6_language_handling_machine',
 		    blockType: BlockType.COMMAND,
-		    text: 'language_handling_machine',
+		    text: '6_language_handling_machine',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'backup_turing_test',
+		    opcode: '7_backup_turing_test',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_turing_test',
+		    text: '7_backup_turing_test',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'thanks_to_nlp',
+		    opcode: '8_thanks_to_nlp',
 		    blockType: BlockType.COMMAND,
-		    text: 'thanks_to_nlp',
+		    text: '8_thanks_to_nlp',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'backup_segmentation',
+		    opcode: '9_backup_segmentation',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_segmentation',
+		    text: '9_backup_segmentation',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'wow_neuron',
+		    opcode: '10_wow_neuron',
 		    blockType: BlockType.COMMAND,
-		    text: 'wow_neuron',
+		    text: '10_wow_neuron',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'human_neuron',
+		    opcode: '10.5_human_neuron',
 		    blockType: BlockType.COMMAND,
-		    text: 'human_neuron',
+		    text: '10.5_human_neuron',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'deep_learning',
+		    opcode: '11_deep_learning',
 		    blockType: BlockType.COMMAND,
-		    text: 'deep_learning',
+		    text: '11_deep_learning',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'really',
+		    opcode: '12_really',
 		    blockType: BlockType.COMMAND,
-		    text: 'really',
+		    text: '12_really',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'you_look_rude',
+		    opcode: '13_you_look_rude',
 		    blockType: BlockType.COMMAND,
-		    text: 'you_look_rude',
+		    text: '13_you_look_rude',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'human_eval',
+		    opcode: '14_human_eval',
 		    blockType: BlockType.COMMAND,
-		    text: 'human_eval',
+		    text: '14_human_eval',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'backup_creating_human_like_behavior_is_difficult',
+		    opcode: '15_backup_creating_human_like_behavior_is_difficult',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_creating_human_like_behavior_is_difficult',
+		    text: '15_backup_creating_human_like_behavior_is_difficult',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'human_elements',
+		    opcode: '16_human_elements',
 		    blockType: BlockType.COMMAND,
-		    text: 'human_elements',
+		    text: '16_human_elements',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'backup_konnichiwa',
+		    opcode: '17_backup_konnichiwa',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_konnichiwa',
+		    text: '17_backup_konnichiwa',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'future_ai_comminucation_support',
+		    opcode: '18_future_ai_comminucation_support',
 		    blockType: BlockType.COMMAND,
-		    text: 'future_ai_comminucation_support',
+		    text: '18_future_ai_comminucation_support',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'nervous',
+		    opcode: '19_nervous',
 		    blockType: BlockType.COMMAND,
-		    text: 'nervous',
+		    text: '19_nervous',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'closing1',
+		    opcode: '20_closing1',
 		    blockType: BlockType.COMMAND,
-		    text: 'closing1',
+		    text: '20_closing1',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: 'closing2',
+		    opcode: '21_closing2',
 		    blockType: BlockType.COMMAND,
-		    text: 'closing2',
+		    text: '21_closing2',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'feel_free_to_ask',
+		    blockType: BlockType.COMMAND,
+		    text: 'feel_free_to_ask',
 		    arguments: {
 			}
 		},
