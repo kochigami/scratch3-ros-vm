@@ -162,6 +162,10 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/nice_to_meet_you');
     }
 
+    two_view_points () {
+	return this._callServiceAndReturn('/two_view_points');
+    }
+
     backup_num_of_lang () {
 	return this._callServiceAndReturn('/backup_num_of_lang');
     }
@@ -178,14 +182,18 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/thanks_to_nlp');
     }
 
+    backup_segmentation () {
+	return this._callServiceAndReturn('/backup_segmentation');
+    }
+
     wow_neuron () {
 	return this._callServiceAndReturn('/wow_neuron');
     }
 
-    human_neuron () {
-	return this._callServiceAndReturn('/human_neuron');
+    deep_learning () {
+	return this._callServiceAndReturn('/deep_learning');
     }
-
+    
     really () {
 	return this._callServiceAndReturn('/really');
     }
@@ -194,18 +202,30 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/you_look_rude');
     }
 
-    backup_konnichiwa () {
-	return this._callServiceAndReturn('/backup_konnichiwa');
+    human_eval () {
+	return this._callServiceAndReturn('/human_eval');
     }
-    
+
     backup_creating_human_like_behavior_is_difficult () {
 	return this._callServiceAndReturn('/backup_creating_human_like_behavior_is_difficult');
     }
 
-    backup_future_ai_comminucation_support () {
-	return this._callServiceAndReturn('/backup_future_ai_comminucation_support');
+    human_elements () {
+	return this._callServiceAndReturn('/human_elements');
+    }
+    
+    backup_konnichiwa () {
+	return this._callServiceAndReturn('/backup_konnichiwa');
     }
 
+    future_ai_comminucation_support () {
+	return this._callServiceAndReturn('/future_ai_comminucation_support');
+    }
+
+    nervous () {
+	return this._callServiceAndReturn('/nervous');
+    }
+    
     closing1 () {
 	return this._callServiceAndReturn('/closing1');
     }
@@ -366,6 +386,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
+		    opcode: 'two_view_points',
+		    blockType: BlockType.COMMAND,
+		    text: 'two_view_points',
+		    arguments: {
+			}
+		},
+		'---',
+		{
 		    opcode: 'backup_num_of_lang',
 		    blockType: BlockType.COMMAND,
 		    text: 'backup_num_of_lang',
@@ -398,6 +426,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
+		    opcode: 'backup_segmentation',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_segmentation',
+		    arguments: {
+			}
+		},
+		'---',
+		{
 		    opcode: 'wow_neuron',
 		    blockType: BlockType.COMMAND,
 		    text: 'wow_neuron',
@@ -406,9 +442,9 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
-		    opcode: 'human_neuron',
+		    opcode: 'deep_learning',
 		    blockType: BlockType.COMMAND,
-		    text: 'wow_neuron',
+		    text: 'deep_learning',
 		    arguments: {
 			}
 		},
@@ -430,9 +466,9 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
-		    opcode: 'backup_konnichiwa',
+		    opcode: 'human_eval',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_konnichiwa',
+		    text: 'human_eval',
 		    arguments: {
 			}
 		},
@@ -443,12 +479,36 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    text: 'backup_creating_human_like_behavior_is_difficult',
 		    arguments: {
 			}
-		},		
+		},
 		'---',
 		{
-		    opcode: 'backup_future_ai_comminucation_support',
+		    opcode: 'human_elements',
 		    blockType: BlockType.COMMAND,
-		    text: 'backup_future_ai_comminucation_support',
+		    text: 'human_elements',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'backup_konnichiwa',
+		    blockType: BlockType.COMMAND,
+		    text: 'backup_konnichiwa',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'future_ai_comminucation_support',
+		    blockType: BlockType.COMMAND,
+		    text: 'future_ai_comminucation_support',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'nervous',
+		    blockType: BlockType.COMMAND,
+		    text: 'nervous',
 		    arguments: {
 			}
 		},
