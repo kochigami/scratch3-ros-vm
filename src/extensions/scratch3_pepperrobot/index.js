@@ -428,7 +428,7 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		{
 		    opcode: '_8_thanks_to_nlp',
 		    blockType: BlockType.COMMAND,
-		    text: '8_thanks_to_nlp',
+		    text: '_8_thanks_to_nlp',
 		    arguments: {
 			}
 		},
