@@ -150,116 +150,44 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/test');
     }
 
-    _1_self_introduction_raika1 () {
-	return this._callServiceAndReturn('/self_introduction_raika1');
-    }
-
-    _2_self_introduction_raika2 () {
-	return this._callServiceAndReturn('/self_introduction_raika2');
-    }
-
-    _3_nice_to_meet_you () {
+    _1_nice_to_meet_you () {
 	return this._callServiceAndReturn('/nice_to_meet_you');
     }
 
-    _4_two_view_points () {
-	return this._callServiceAndReturn('/two_view_points');
+    _2_what_is_robotics_for_children () {
+	return this._callServiceAndReturn('/what_is_robotics_for_children');
     }
 
-    _5_backup_num_of_lang () {
-	return this._callServiceAndReturn('/backup_num_of_lang');
+    _3_why_create_human_human_interaction () {
+	return this._callServiceAndReturn('/why_create_human_human_interaction');
     }
 
-    _6_language_handling_machine () {
-	return this._callServiceAndReturn('/language_handling_machine');
+    _4_doctoral_thesis () {
+	return this._callServiceAndReturn('/doctoral_thesis');
     }
 
-    _7_backup_turing_test () {
-	return this._callServiceAndReturn('/backup_turing_test');
+    _5_what_is_next () {
+	return this._callServiceAndReturn('/what_is_next');
     }
 
-    _8_thanks_to_nlp () {
-	return this._callServiceAndReturn('/thanks_to_nlp');
+    thank_you () {
+	return this._callServiceAndReturn('/thank_you');
     }
 
-    _9_backup_segmentation () {
-	return this._callServiceAndReturn('/backup_segmentation');
+    generate_summary_of_speech_contents () {
+	return this._callServiceAndReturn('/generate_summary_of_speech_contents');
     }
 
-    _10_wow_neuron () {
-	return this._callServiceAndReturn('/wow_neuron');
+    generate_question_of_speech_contents () {
+	return this._callServiceAndReturn('/generate_question_of_speech_contents');
     }
 
-    _10_5_human_neuron () {
-	return this._callServiceAndReturn('/human_neuron');
+    cleanup_speech_contents () {
+	return this._callServiceAndReturn('/cleanup_speech_contents');
     }
 
-    _11_deep_learning () {
-	return this._callServiceAndReturn('/deep_learning');
-    }
-    
-    _12_really () {
-	return this._callServiceAndReturn('/really');
-    }
-
-    _13_you_look_rude () {
-	return this._callServiceAndReturn('/you_look_rude');
-    }
-
-    _14_human_eval () {
-	return this._callServiceAndReturn('/human_eval');
-    }
-
-    _15_backup_creating_human_like_behavior_is_difficult () {
-	return this._callServiceAndReturn('/backup_creating_human_like_behavior_is_difficult');
-    }
-
-    _16_human_elements () {
-	return this._callServiceAndReturn('/human_elements');
-    }
-    
-    _17_backup_konnichiwa () {
-	return this._callServiceAndReturn('/backup_konnichiwa');
-    }
-
-    _18_future_ai_comminucation_support () {
-	return this._callServiceAndReturn('/future_ai_comminucation_support');
-    }
-
-    _19_nervous () {
-	return this._callServiceAndReturn('/nervous');
-    }
-    
-    _20_closing1 () {
-	return this._callServiceAndReturn('/closing1');
-    }
-
-    _21_closing2 () {
-	return this._callServiceAndReturn('/closing2');
-    }
-
-    feel_free_to_ask () {
-	return this._callServiceAndReturn('/feel_free_to_ask');
-    }
-
-    look_front () {
-	return this._callServiceAndReturn('/look_front');
-    }
-    
-    look_right () {
-	return this._callServiceAndReturn('/look_right');
-    }
-
-    look_left () {
-	return this._callServiceAndReturn('/look_left');
-    }
-
-    thinking_start () {
-	return this._callServiceAndReturn('/thinking_start');
-    }
-
-    thinking_stop () {
-	return this._callServiceAndReturn('/thinking_stop');
+    backup_question_from_robot () {
+	return this._callServiceAndReturn('/backup_question_from_robot');
     }
 
     getInfo () {
@@ -370,225 +298,81 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		},
 		'---',
 		{
-		    opcode: '_1_self_introduction_raika1',
+		    opcode: '_1_nice_to_meet_you',
 		    blockType: BlockType.COMMAND,
-		    text: '_1_self_introduction_raika1',
+		    text: '_1_nice_to_meet_you',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_2_self_introduction_raika2',
+		    opcode: '_2_what_is_robotics_for_children',
 		    blockType: BlockType.COMMAND,
-		    text: '_2_self_introduction_raika2',
+		    text: '_2_what_is_robotics_for_children',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_3_nice_to_meet_you',
+		    opcode: '_3_why_create_human_human_interaction',
 		    blockType: BlockType.COMMAND,
-		    text: '_3_nice_to_meet_you',
+		    text: '_3_why_create_human_human_interaction',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_4_two_view_points',
+		    opcode: '_4_doctoral_thesis',
 		    blockType: BlockType.COMMAND,
-		    text: '_4_two_view_points',
+		    text: '_4_doctoral_thesis',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_5_backup_num_of_lang',
+		    opcode: '_5_what_is_next',
 		    blockType: BlockType.COMMAND,
-		    text: '_5_backup_num_of_lang',
+		    text: '_5_what_is_next',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_6_language_handling_machine',
+		    opcode: 'thank_you',
 		    blockType: BlockType.COMMAND,
-		    text: '_6_language_handling_machine',
+		    text: 'thank_you',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_7_backup_turing_test',
+		    opcode: 'generate_summary_of_speech_contents',
 		    blockType: BlockType.COMMAND,
-		    text: '_7_backup_turing_test',
+		    text: 'generate_summary_of_speech_contents',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_8_thanks_to_nlp',
+		    opcode: 'generate_question_of_speech_contents',
 		    blockType: BlockType.COMMAND,
-		    text: '_8_thanks_to_nlp',
+		    text: 'generate_question_of_speech_contents',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_9_backup_segmentation',
+		    opcode: 'cleanup_speech_contents',
 		    blockType: BlockType.COMMAND,
-		    text: '_9_backup_segmentation',
+		    text: 'cleanup_speech_contents',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_10_wow_neuron',
+		    opcode: 'backup_question_from_robot',
 		    blockType: BlockType.COMMAND,
-		    text: '_10_wow_neuron',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_10_5_human_neuron',
-		    blockType: BlockType.COMMAND,
-		    text: '_10_5_human_neuron',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_11_deep_learning',
-		    blockType: BlockType.COMMAND,
-		    text: '_11_deep_learning',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_12_really',
-		    blockType: BlockType.COMMAND,
-		    text: '_12_really',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_13_you_look_rude',
-		    blockType: BlockType.COMMAND,
-		    text: '_13_you_look_rude',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_14_human_eval',
-		    blockType: BlockType.COMMAND,
-		    text: '_14_human_eval',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_15_backup_creating_human_like_behavior_is_difficult',
-		    blockType: BlockType.COMMAND,
-		    text: '_15_backup_creating_human_like_behavior_is_difficult',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_16_human_elements',
-		    blockType: BlockType.COMMAND,
-		    text: '_16_human_elements',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_17_backup_konnichiwa',
-		    blockType: BlockType.COMMAND,
-		    text: '_17_backup_konnichiwa',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_18_future_ai_comminucation_support',
-		    blockType: BlockType.COMMAND,
-		    text: '_18_future_ai_comminucation_support',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_19_nervous',
-		    blockType: BlockType.COMMAND,
-		    text: '_19_nervous',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_20_closing1',
-		    blockType: BlockType.COMMAND,
-		    text: '_20_closing1',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_21_closing2',
-		    blockType: BlockType.COMMAND,
-		    text: '_21_closing2',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'feel_free_to_ask',
-		    blockType: BlockType.COMMAND,
-		    text: 'feel_free_to_ask',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_front',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_front',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_right',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_right',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_left',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_left',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'thinking_start',
-		    blockType: BlockType.COMMAND,
-		    text: 'thinking_start',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'thinking_stop',
-		    blockType: BlockType.COMMAND,
-		    text: 'thinking_stop',
+		    text: 'backup_question_from_robot',
 		    arguments: {
 			}
 		},
