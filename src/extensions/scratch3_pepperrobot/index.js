@@ -146,120 +146,44 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
             catch(err => this._reportError(err));
     }
 
-    test () {
-	return this._callServiceAndReturn('/test');
+    _1_ () {
+	return this._callServiceAndReturn('/mode1');
     }
 
-    _1_self_introduction_raika1 () {
-	return this._callServiceAndReturn('/self_introduction_raika1');
+    _2_ () {
+	return this._callServiceAndReturn('/mode2');
     }
 
-    _2_self_introduction_raika2 () {
-	return this._callServiceAndReturn('/self_introduction_raika2');
+    _3_ () {
+	return this._callServiceAndReturn('/mode3');
     }
 
-    _3_nice_to_meet_you () {
-	return this._callServiceAndReturn('/nice_to_meet_you');
+    _4_ () {
+	return this._callServiceAndReturn('/mode4');
     }
 
-    _4_two_view_points () {
-	return this._callServiceAndReturn('/two_view_points');
+    _5_ () {
+	return this._callServiceAndReturn('/mode5');
     }
 
-    _5_backup_num_of_lang () {
-	return this._callServiceAndReturn('/backup_num_of_lang');
+    _6_ () {
+	return this._callServiceAndReturn('/mode6');
     }
 
-    _6_language_handling_machine () {
-	return this._callServiceAndReturn('/language_handling_machine');
+    _7_ () {
+	return this._callServiceAndReturn('/mode7');
     }
 
-    _7_backup_turing_test () {
-	return this._callServiceAndReturn('/backup_turing_test');
+    _8_ () {
+	return this._callServiceAndReturn('/mode8');
     }
 
-    _8_thanks_to_nlp () {
-	return this._callServiceAndReturn('/thanks_to_nlp');
+    _9_ () {
+	return this._callServiceAndReturn('/mode9');
     }
 
-    _9_backup_segmentation () {
-	return this._callServiceAndReturn('/backup_segmentation');
-    }
-
-    _10_wow_neuron () {
-	return this._callServiceAndReturn('/wow_neuron');
-    }
-
-    _10_5_human_neuron () {
-	return this._callServiceAndReturn('/human_neuron');
-    }
-
-    _11_deep_learning () {
-	return this._callServiceAndReturn('/deep_learning');
-    }
-    
-    _12_really () {
-	return this._callServiceAndReturn('/really');
-    }
-
-    _13_you_look_rude () {
-	return this._callServiceAndReturn('/you_look_rude');
-    }
-
-    _14_human_eval () {
-	return this._callServiceAndReturn('/human_eval');
-    }
-
-    _15_backup_creating_human_like_behavior_is_difficult () {
-	return this._callServiceAndReturn('/backup_creating_human_like_behavior_is_difficult');
-    }
-
-    _16_human_elements () {
-	return this._callServiceAndReturn('/human_elements');
-    }
-    
-    _17_backup_konnichiwa () {
-	return this._callServiceAndReturn('/backup_konnichiwa');
-    }
-
-    _18_future_ai_comminucation_support () {
-	return this._callServiceAndReturn('/future_ai_comminucation_support');
-    }
-
-    _19_nervous () {
-	return this._callServiceAndReturn('/nervous');
-    }
-    
-    _20_closing1 () {
-	return this._callServiceAndReturn('/closing1');
-    }
-
-    _21_closing2 () {
-	return this._callServiceAndReturn('/closing2');
-    }
-
-    feel_free_to_ask () {
-	return this._callServiceAndReturn('/feel_free_to_ask');
-    }
-
-    look_front () {
-	return this._callServiceAndReturn('/look_front');
-    }
-    
-    look_right () {
-	return this._callServiceAndReturn('/look_right');
-    }
-
-    look_left () {
-	return this._callServiceAndReturn('/look_left');
-    }
-
-    thinking_start () {
-	return this._callServiceAndReturn('/thinking_start');
-    }
-
-    thinking_stop () {
-	return this._callServiceAndReturn('/thinking_stop');
+    _10_ () {
+	return this._callServiceAndReturn('/mode10');
     }
 
     getInfo () {
@@ -362,233 +286,81 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
                 },
 		'---',
 		{
-		    opcode: 'test',
+		    opcode: '_1_',
 		    blockType: BlockType.COMMAND,
-		    text: 'test',
+		    text: '_1_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_1_self_introduction_raika1',
+		    opcode: '_2_',
 		    blockType: BlockType.COMMAND,
-		    text: '_1_self_introduction_raika1',
+		    text: '_2_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_2_self_introduction_raika2',
+		    opcode: '_3_',
 		    blockType: BlockType.COMMAND,
-		    text: '_2_self_introduction_raika2',
+		    text: '_3_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_3_nice_to_meet_you',
+		    opcode: '_4_',
 		    blockType: BlockType.COMMAND,
-		    text: '_3_nice_to_meet_you',
+		    text: '_4_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_4_two_view_points',
+		    opcode: '_5_',
 		    blockType: BlockType.COMMAND,
-		    text: '_4_two_view_points',
+		    text: '_5_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_5_backup_num_of_lang',
+		    opcode: '_6_',
 		    blockType: BlockType.COMMAND,
-		    text: '_5_backup_num_of_lang',
+		    text: '_6_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_6_language_handling_machine',
+		    opcode: '_7_',
 		    blockType: BlockType.COMMAND,
-		    text: '_6_language_handling_machine',
+		    text: '_7_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_7_backup_turing_test',
+		    opcode: '_8_',
 		    blockType: BlockType.COMMAND,
-		    text: '_7_backup_turing_test',
+		    text: '_8_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_8_thanks_to_nlp',
+		    opcode: '_9_',
 		    blockType: BlockType.COMMAND,
-		    text: '_8_thanks_to_nlp',
+		    text: '_9_',
 		    arguments: {
 			}
 		},
 		'---',
 		{
-		    opcode: '_9_backup_segmentation',
+		    opcode: '_10_',
 		    blockType: BlockType.COMMAND,
-		    text: '_9_backup_segmentation',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_10_wow_neuron',
-		    blockType: BlockType.COMMAND,
-		    text: '_10_wow_neuron',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_10_5_human_neuron',
-		    blockType: BlockType.COMMAND,
-		    text: '_10_5_human_neuron',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_11_deep_learning',
-		    blockType: BlockType.COMMAND,
-		    text: '_11_deep_learning',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_12_really',
-		    blockType: BlockType.COMMAND,
-		    text: '_12_really',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_13_you_look_rude',
-		    blockType: BlockType.COMMAND,
-		    text: '_13_you_look_rude',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_14_human_eval',
-		    blockType: BlockType.COMMAND,
-		    text: '_14_human_eval',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_15_backup_creating_human_like_behavior_is_difficult',
-		    blockType: BlockType.COMMAND,
-		    text: '_15_backup_creating_human_like_behavior_is_difficult',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_16_human_elements',
-		    blockType: BlockType.COMMAND,
-		    text: '_16_human_elements',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_17_backup_konnichiwa',
-		    blockType: BlockType.COMMAND,
-		    text: '_17_backup_konnichiwa',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_18_future_ai_comminucation_support',
-		    blockType: BlockType.COMMAND,
-		    text: '_18_future_ai_comminucation_support',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_19_nervous',
-		    blockType: BlockType.COMMAND,
-		    text: '_19_nervous',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_20_closing1',
-		    blockType: BlockType.COMMAND,
-		    text: '_20_closing1',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: '_21_closing2',
-		    blockType: BlockType.COMMAND,
-		    text: '_21_closing2',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'feel_free_to_ask',
-		    blockType: BlockType.COMMAND,
-		    text: 'feel_free_to_ask',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_front',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_front',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_right',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_right',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'look_left',
-		    blockType: BlockType.COMMAND,
-		    text: 'look_left',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'thinking_start',
-		    blockType: BlockType.COMMAND,
-		    text: 'thinking_start',
-		    arguments: {
-			}
-		},
-		'---',
-		{
-		    opcode: 'thinking_stop',
-		    blockType: BlockType.COMMAND,
-		    text: 'thinking_stop',
+		    text: '_10_',
 		    arguments: {
 			}
 		},
