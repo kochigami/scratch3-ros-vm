@@ -186,6 +186,14 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 	return this._callServiceAndReturn('/mode10');
     }
 
+    _11_ () {
+	return this._callServiceAndReturn('/mode11');
+    }
+
+    nodding () {
+	return this._callServiceAndReturn('/nodding');
+    }
+
     getInfo () {
         return {
             id: this.extensionId,
@@ -361,6 +369,22 @@ class Scratch3PepperRobotBlocks extends Scratch3RobotBase {
 		    opcode: '_10_',
 		    blockType: BlockType.COMMAND,
 		    text: '_10_',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: '_11_',
+		    blockType: BlockType.COMMAND,
+		    text: '_11_',
+		    arguments: {
+			}
+		},
+		'---',
+		{
+		    opcode: 'nodding',
+		    blockType: BlockType.COMMAND,
+		    text: 'nodding',
 		    arguments: {
 			}
 		},
